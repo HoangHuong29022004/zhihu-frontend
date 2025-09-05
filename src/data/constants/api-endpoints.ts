@@ -86,7 +86,7 @@ export const API_ENDPOINT = {
 // API MODULES
 export const API_MODULE = {
   AUTH: "auth",
-  FILE: "auth",
+  FILE: "files",
   USERS: "users",
   PERMISSIONS: "permissions",
   ROLES: "roles",

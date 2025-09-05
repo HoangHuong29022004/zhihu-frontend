@@ -27,7 +27,7 @@ export const ADSENSE_CONFIG = {
     PRODUCTION: {
       enabled: true, // Bật ads ở production
       clientId:
-        process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-9429981491740615",
+        process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || "ca-pub-9429981491740615"
     },
   },
 };

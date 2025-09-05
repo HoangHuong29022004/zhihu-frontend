@@ -34,7 +34,7 @@ export const apiClient = (
         } else {
           const token = getAccessToken();
           if (token) {
-            config.headers["Authorization"] = `Bearer ${accessToken}`;
+            config.headers["Authorization"] = `Bearer ${token}`;
           }
         }
       }
