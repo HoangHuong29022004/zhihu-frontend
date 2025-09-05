@@ -1,0 +1,42 @@
+[
+  {
+    "name": "lập trình viên",
+    "index": "1"
+  },
+  {
+    "name": "kỹ sư",
+    "index": "2"
+  },
+  {
+    "name": "trưởng nhóm kinh doanh",
+    "index": "3"
+  },
+  {
+    "name": "nhân viên bán hàng",
+    "index": "4"
+  },
+  {
+    "name": "tiếng anh",
+    "index": "5"
+  },
+  {
+    "name": "kế toán tổng hợp",
+    "index": "6"
+  },
+  {
+    "name": "thương mại điện tử",
+    "index": "7"
+  },
+  {
+    "name": "data analyst",
+    "index": "8"
+  },
+  {
+    "name": "quản lý",
+    "index": "8"
+  },
+  {
+    "name": "kinh doanh",
+    "index": "8"
+  }
+]

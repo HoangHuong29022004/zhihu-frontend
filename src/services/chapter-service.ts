@@ -1,0 +1,84 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { apiClient } from "@/configs/axios-interceptor";
+import { API_ENDPOINT } from "@/data/constants/api-endpoints";
+import {
+  TAddChapterRequest,
+  TUpdateChapterRequest,
+} from "@/schemas/chapter.schema";
+
+export const getChapterDetailBySlug = async (
+  request: string,
+  token: string
+) => {
+  try {
+    const res = await apiClient("", true, "application/json", token).get(
+      `${API_ENDPOINT.CHAPTER_DETAIL_BY_SLUG}/${request}`
+    );
+    return res.data;
+  } catch (error: any) {
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
+  }
+};
+
+export const addNewChapter = async (
+  token: string,
+  request: TAddChapterRequest
+) => {
+  try {
+    const res = await apiClient("", true, "application/json", token).post(
+      `${API_ENDPOINT.CHAPTER_MODULE}`,
+      request
+    );
+    return res.data;
+  } catch (error: any) {
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
+  }
+};
+
+export const updateChapter = async (
+  token: string,
+  id: string,
+  request: TUpdateChapterRequest
+) => {
+  try {
+    const res = await apiClient("", true, "application/json", token).put(
+      `${API_ENDPOINT.CHAPTER_MODULE}/${id}`,
+      request
+    );
+    return res.data;
+  } catch (error: any) {
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
+  }
+};
+
+export const getChapterDetailById = async (token: string, request: string) => {
+  try {
+    const res = await apiClient("", true, "application/json", token).get(
+      `${API_ENDPOINT.CHAPTER_MODULE}/${request}`
+    );
+    return res.data;
+  } catch (error: any) {
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
+  }
+};
+
+export const deleteChapter = async (token: string, request: string) => {
+  try {
+    const res = await apiClient("", true, "application/json", token).delete(
+      `${API_ENDPOINT.CHAPTER_MODULE}/${request}`
+    );
+    return res.data;
+  } catch (error: any) {
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
+  }
+};

@@ -1,0 +1,753 @@
+[
+  {
+    "id": 1,
+    "name": "frontend developer",
+    "index": 1
+  },
+  {
+    "id": 2,
+    "name": "frontend intern",
+    "index": 2
+  },
+  {
+    "id": 3,
+    "name": "intern frontend",
+    "index": 3
+  },
+  {
+    "id": 4,
+    "name": "frontend",
+    "index": 4
+  },
+  {
+    "id": 5,
+    "name": "intern frontend developer"
+  },
+  {
+    "id": 6,
+    "name": "junior frontend developer"
+  },
+  {
+    "id": 7,
+    "name": "senior frontend developer"
+  },
+  {
+    "id": 9,
+    "name": "lập trình viên frontend"
+  },
+  {
+    "id": 10,
+    "name": "backend developer",
+    "index": 1
+  },
+  {
+    "id": 11,
+    "name": "backend intern",
+    "index": 2
+  },
+  {
+    "id": 12,
+    "name": "backend",
+    "index": 3
+  },
+  {
+    "id": 13,
+    "name": "lập trình viên backend",
+    "index": 4
+  },
+  {
+    "id": 14,
+    "name": "junior backend"
+  },
+  {
+    "id": 15,
+    "name": "senior backend"
+  },
+  {
+    "id": 16,
+    "name": "nhân viên bán hàng",
+    "index": 1
+  },
+  {
+    "id": 17,
+    "name": "nhân viên kế toán",
+    "index": 2
+  },
+  {
+    "id": 18,
+    "name": "nhân viên ngân hàng",
+    "index": 3
+  },
+  {
+    "id": 19,
+    "name": "java developer",
+    "index": 1
+  },
+  {
+    "id": 20,
+    "name": ".net developer",
+    "index": 2
+  },
+  {
+    "id": 21,
+    "name": "c# developer",
+    "index": 3
+  },
+  {
+    "id": 22,
+    "name": "reactjs developer",
+    "index": 4
+  },
+  {
+    "id": 23,
+    "name": "nodejs developer",
+    "index": 5
+  },
+  {
+    "id": 24,
+    "name": "php developer",
+    "index": 6
+  },
+  {
+    "id": 25,
+    "name": "wordpress developer",
+    "index": 7
+  },
+  {
+    "id": 26,
+    "name": "selvelt developer",
+    "index": 8
+  },
+  {
+    "id": 27,
+    "name": "flutter developer",
+    "index": 2
+  },
+  {
+    "id": 28,
+    "name": "golang developer",
+    "index": 10
+  },
+  {
+    "id": 29,
+    "name": "swift developer"
+  },
+  {
+    "id": 30,
+    "name": "c++ developer"
+  },
+  {
+    "id": 31,
+    "name": "c developer"
+  },
+  {
+    "id": 32,
+    "name": "iot developer",
+    "index": 1
+  },
+  {
+    "id": 33,
+    "name": "web developer",
+    "index": 2
+  },
+  {
+    "id": 34,
+    "name": "mobile dev",
+    "index": 2
+  },
+  {
+    "id": 35,
+    "name": "ios developer",
+    "index": 4
+  },
+  {
+    "id": 36,
+    "name": "android developer",
+    "index": 5
+  },
+  {
+    "id": 37,
+    "name": "ui/ux designer",
+    "index": 1
+  },
+  {
+    "id": 38,
+    "name": "graphic designer",
+    "index": 2
+  },
+  {
+    "id": 39,
+    "name": "ai engineer",
+    "index": 1
+  },
+  {
+    "id": 40,
+    "name": "data scientist",
+    "index": 2
+  },
+  {
+    "id": 41,
+    "name": "data analyst",
+    "index": 3
+  },
+  {
+    "id": 42,
+    "name": "data engineer",
+    "index": 4
+  },
+  {
+    "id": 43,
+    "name": "nhân viên nhân sự",
+    "index": 1
+  },
+  {
+    "id": 44,
+    "name": "chuyên viên tuyển dụng",
+    "index": 2
+  },
+  {
+    "id": 45,
+    "name": "nhân viên kinh doanh",
+    "index": 1
+  },
+  {
+    "id": 46,
+    "name": "trưởng phòng kinh doanh",
+    "index": 2
+  },
+  {
+    "id": 47,
+    "name": "nhân viên ngân hàng",
+    "index": 3
+  },
+  {
+    "id": 48,
+    "name": "kế toán viên",
+    "index": 1
+  },
+  {
+    "id": 49,
+    "name": "kế toán trưởng",
+    "index": 2
+  },
+  {
+    "id": 50,
+    "name": "trưởng phòng kế toán",
+    "index": 3
+  },
+  {
+    "id": 51,
+    "name": "trưởng phòng nhân sự",
+    "index": 4
+  },
+  {
+    "id": 52,
+    "name": "trưởng phòng IT",
+    "index": 5
+  },
+  {
+    "id": 53,
+    "name": "trưởng phòng marketing",
+    "index": 6
+  },
+  {
+    "id": 54,
+    "name": "nhân viên dịch vụ khách hàng",
+    "index": 1
+  },
+  {
+    "id": 55,
+    "name": "nhân viên lễ tân",
+    "index": 2
+  },
+  {
+    "id": 56,
+    "name": "nhân viên phục vụ",
+    "index": 3
+  },
+  {
+    "id": 57,
+    "name": "nhân viên buồng phòng",
+    "index": 4
+  },
+  {
+    "id": 58,
+    "name": "nhân viên du lịch",
+    "index": 5
+  },
+  {
+    "id": 59,
+    "name": "hướng dẫn viên du lịch",
+    "index": 6
+  },
+  {
+    "id": 60,
+    "name": "quản lý khách sạn",
+    "index": 7
+  },
+  {
+    "id": 61,
+    "name": "quản lý nhà hàng",
+    "index": 8
+  },
+  {
+    "id": 62,
+    "name": "quản lý dịch vụ",
+    "index": 9
+  },
+  {
+    "id": 63,
+    "name": "quản lý dự án",
+    "index": 10
+  },
+  {
+    "id": 64,
+    "name": "scrum master"
+  },
+  {
+    "id": 65,
+    "name": "product owner"
+  },
+  {
+    "id": 66,
+    "name": "business analyst"
+  },
+  {
+    "id": 67,
+    "name": "system administrator"
+  },
+  {
+    "id": 68,
+    "name": "network engineer"
+  },
+  {
+    "id": 69,
+    "name": "security engineer"
+  },
+  {
+    "id": 70,
+    "name": "devops engineer"
+  },
+  {
+    "id": 71,
+    "name": "cloud engineer"
+  },
+  {
+    "id": 72,
+    "name": "machine learning engineer"
+  },
+  {
+    "id": 73,
+    "name": "deep learning engineer"
+  },
+  {
+    "id": 74,
+    "name": "big data engineer"
+  },
+  {
+    "id": 75,
+    "name": "software architect"
+  },
+  {
+    "id": 76,
+    "name": "technical lead"
+  },
+  {
+    "id": 77,
+    "name": "solution architect"
+  },
+  {
+    "id": 78,
+    "name": "qa engineer"
+  },
+  {
+    "id": 79,
+    "name": "test engineer"
+  },
+  {
+    "id": 80,
+    "name": "automation engineer"
+  },
+  {
+    "id": 81,
+    "name": "embedded systems engineer"
+  },
+  {
+    "id": 82,
+    "name": "firmware engineer"
+  },
+  {
+    "id": 83,
+    "name": "hardware engineer"
+  },
+  {
+    "id": 84,
+    "name": "electrical engineer"
+  },
+  {
+    "id": 85,
+    "name": "mechanical engineer"
+  },
+  {
+    "id": 86,
+    "name": "civil engineer"
+  },
+  {
+    "id": 87,
+    "name": "chemical engineer"
+  },
+  {
+    "id": 88,
+    "name": "biomedical engineer"
+  },
+  {
+    "id": 89,
+    "name": "environmental engineer"
+  },
+  {
+    "id": 90,
+    "name": "industrial engineer"
+  },
+  {
+    "id": 91,
+    "name": "manufacturing engineer"
+  },
+  {
+    "id": 92,
+    "name": "quality engineer"
+  },
+  {
+    "id": 93,
+    "name": "supply chain manager"
+  },
+  {
+    "id": 94,
+    "name": "logistics manager"
+  },
+  {
+    "id": 95,
+    "name": "procurement manager"
+  },
+  {
+    "id": 96,
+    "name": "operations manager"
+  },
+  {
+    "id": 97,
+    "name": "project manager"
+  },
+  {
+    "id": 98,
+    "name": "program manager"
+  },
+  {
+    "id": 99,
+    "name": "product manager"
+  },
+  {
+    "id": 100,
+    "name": "marketing manager"
+  },
+  {
+    "id": 101,
+    "name": "sales manager"
+  },
+  {
+    "id": 102,
+    "name": "account manager"
+  },
+  {
+    "id": 103,
+    "name": "customer success manager"
+  },
+  {
+    "id": 104,
+    "name": "business development manager"
+  },
+  {
+    "id": 105,
+    "name": "financial analyst"
+  },
+  {
+    "id": 106,
+    "name": "investment analyst"
+  },
+  {
+    "id": 107,
+    "name": "risk analyst"
+  },
+  {
+    "id": 108,
+    "name": "compliance officer"
+  },
+  {
+    "id": 109,
+    "name": "internal auditor"
+  },
+  {
+    "id": 110,
+    "name": "tax consultant"
+  },
+  {
+    "id": 111,
+    "name": "legal counsel"
+  },
+  {
+    "id": 112,
+    "name": "paralegal"
+  },
+  {
+    "id": 113,
+    "name": "human resources manager"
+  },
+  {
+    "id": 114,
+    "name": "training and development manager"
+  },
+  {
+    "id": 115,
+    "name": "recruitment consultant"
+  },
+  {
+    "id": 116,
+    "name": "compensation and benefits manager"
+  },
+  {
+    "id": 117,
+    "name": "health and safety officer"
+  },
+  {
+    "id": 118,
+    "name": "public relations officer"
+  },
+  {
+    "id": 119,
+    "name": "event coordinator"
+  },
+  {
+    "id": 120,
+    "name": "social media manager"
+  },
+  {
+    "id": 121,
+    "name": "content writer"
+  },
+  {
+    "id": 122,
+    "name": "copywriter"
+  },
+  {
+    "id": 123,
+    "name": "technical writer"
+  },
+  {
+    "id": 124,
+    "name": "editor"
+  },
+  {
+    "id": 125,
+    "name": "journalist"
+  },
+  {
+    "id": 126,
+    "name": "photographer"
+  },
+  {
+    "id": 127,
+    "name": "videographer"
+  },
+  {
+    "id": 128,
+    "name": "graphic designer"
+  },
+  {
+    "id": 129,
+    "name": "web designer"
+  },
+  {
+    "id": 130,
+    "name": "ui/ux designer"
+  },
+  {
+    "id": 131,
+    "name": "motion graphics designer"
+  },
+  {
+    "id": 132,
+    "name": "3d artist"
+  },
+  {
+    "id": 133,
+    "name": "animator"
+  },
+  {
+    "id": 134,
+    "name": "game designer"
+  },
+  {
+    "id": 135,
+    "name": "game developer"
+  },
+  {
+    "id": 136,
+    "name": "game artist"
+  },
+  {
+    "id": 137,
+    "name": "game tester"
+  },
+  {
+    "id": 138,
+    "name": "game producer"
+  },
+  {
+    "id": 139,
+    "name": "audio engineer"
+  },
+  {
+    "id": 140,
+    "name": "IT help desk",
+    "index": 1
+  },
+  {
+    "id": 141,
+    "name": "video editor"
+  },
+  {
+    "id": 142,
+    "name": "editor"
+  },
+  {
+    "id": 143,
+    "name": "trợ lý"
+  },
+  {
+    "id": 144,
+    "name": "trợ giảng"
+  },
+  {
+    "id": 145,
+    "name": "giảng viên"
+  },
+  {
+    "id": 146,
+    "name": "kỹ sư phầm mềm"
+  },
+  {
+    "id": 147,
+    "name": "kỹ sư AI"
+  },
+  {
+    "id": 148,
+    "name": "nhân viên mạng"
+  },
+  {
+    "id": 149,
+    "name": "quảng trị mạng"
+  },
+  {
+    "id": 150,
+    "name": "trưởng nhóm kinh doanh"
+  },
+  {
+    "id": 151,
+    "name": "thiết kế web"
+  },
+  {
+    "id": 153,
+    "name": "nextjs"
+  },
+  {
+    "id": 153,
+    "name": "nextjs developer"
+  },
+  {
+    "id": 154,
+    "name": "marketing"
+  },
+  {
+    "id": 155,
+    "name": "nhân viên marketing"
+  },
+  {
+    "id": 156,
+    "name": "react native"
+  },
+  {
+    "id": 157,
+    "name": "angular"
+  },
+  {
+    "id": 158,
+    "name": "vuejs"
+  },
+  {
+    "id": 159,
+    "name": "php laravel"
+  },
+  {
+    "id": 160,
+    "name": "nestjs"
+  },
+  {
+    "id": 161,
+    "name": "AI dev"
+  },
+  {
+    "id": 162,
+    "name": "fullstack dev"
+  },
+  {
+    "id": 163,
+    "name": "fullstack developer"
+  },
+  {
+    "id": 164,
+    "name": "lập trình viên fullstack"
+  },
+  {
+    "id": 165,
+    "name": "AI intern"
+  },
+  {
+    "id": 166,
+    "name": "AI engineer intern"
+  },
+  {
+    "id": 167,
+    "name": "mobile developer"
+  },
+  {
+    "id": 168,
+    "name": "mobile react native"
+  },
+  {
+    "id": 169,
+    "name": "mobile android"
+  },
+  {
+    "id": 170,
+    "name": "mobile IOS"
+  },
+  {
+    "id": 171,
+    "name": "mobile flutter"
+  },
+  {
+    "id": 172,
+    "name": "flutter developer"
+  },
+  {
+    "id": 173,
+    "name": "intern flutter"
+  },
+  {
+    "id": 174,
+    "name": "fresher flutter"
+  },
+  {
+    "id": 175,
+    "name": "flutter",
+    "index": 1
+  }
+]

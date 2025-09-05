@@ -1,0 +1,460 @@
+[
+  {
+    "id": "1",
+    "name": "Hà Nội",
+    "index": 1,
+    "typeText": "Thành phố",
+    "slug": "HANOI",
+    "keywords": ["Hà Nội", "Ha Noi", "HN", "hanoi"]
+  },
+  {
+    "id": "2",
+    "name": "TP Hồ Chí Minh",
+    "index": 2,
+    "typeText": "Thành phố",
+    "slug": "TPHCM",
+    "keywords": [
+      "Hồ Chí Minh",
+      "TP.Hồ Chí Minh",
+      "TP. Hồ Chí Minh",
+      "TP Hồ Chí Minh",
+      "Thành phố Hồ Chí Minh",
+      "HCM",
+      "hochiminh",
+      "saigon",
+      "sai",
+      "sg"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Đà Nẵng",
+    "index": 3,
+    "typeText": "Thành phố",
+    "slug": "DANANG",
+    "keywords": ["Đà Nẵng", "Da Nang", "dn", "danang"]
+  },
+  {
+    "id": "4",
+    "name": "Cần Thơ",
+    "index": 4,
+    "typeText": "Thành phố",
+    "slug": "CANTHO",
+    "keywords": ["Cần Thơ", "Can Tho", "ct", "cantho"]
+  },
+  {
+    "id": "5",
+    "name": "Bình Dương",
+    "index": 5,
+    "typeText": "Tỉnh",
+    "slug": "BINHDUONG",
+    "keywords": ["Bình Dương", "Binh Duong", "binhduong"]
+  },
+  {
+    "id": "6",
+    "name": "Đồng Nai",
+    "index": 6,
+    "typeText": "Tỉnh",
+    "slug": "DONGNAI",
+    "keywords": ["Đồng Nai", "Dong Nai", "dongnai"]
+  },
+  {
+    "id": "7",
+    "name": "Bà Rịa - Vũng Tàu",
+    "typeText": "Tỉnh",
+    "slug": "BARIAVUNGTAU",
+    "keywords": ["Bà Rịa - Vũng Tàu", "BRVT", "baria vungtau"]
+  },
+  {
+    "id": "8",
+    "name": "Bắc Giang",
+    "typeText": "Tỉnh",
+    "slug": "BACGIANG",
+    "keywords": ["Bắc Giang", "BG", "bacgiang"]
+  },
+  {
+    "id": "9",
+    "name": "Bắc Kạn",
+    "typeText": "Tỉnh",
+    "slug": "BACKAN",
+    "keywords": ["Bắc Kạn", "Bac Kan", "backan"]
+  },
+  {
+    "id": "10",
+    "name": "Bạc Liêu",
+    "typeText": "Tỉnh",
+    "slug": "BACLIEU",
+    "keywords": ["Bạc Liêu", "Bac Lieu", "baclieu"]
+  },
+  {
+    "id": "11",
+    "name": "Bắc Ninh",
+    "typeText": "Tỉnh",
+    "slug": "BACNINH",
+    "keywords": ["Bắc Ninh", "Bac Ninh", "bacninh"]
+  },
+  {
+    "id": "12",
+    "name": "Bến Tre",
+    "typeText": "Tỉnh",
+    "slug": "BENTRE",
+    "keywords": ["Bến Tre", "Ben Tre", "bentre"]
+  },
+  {
+    "id": "13",
+    "name": "Bình Định",
+    "typeText": "Tỉnh",
+    "slug": "BINHDINH",
+    "keywords": ["Bình Định", "Binh Dinh", "binhdinh"]
+  },
+  {
+    "id": "14",
+    "name": "Bình Phước",
+    "typeText": "Tỉnh",
+    "slug": "BINHPHUOC",
+    "keywords": ["Bình Phước", "Binh Phuoc", "binhphuoc"]
+  },
+  {
+    "id": "15",
+    "name": "Bình Thuận",
+    "typeText": "Tỉnh",
+    "slug": "BINHTHUAN",
+    "keywords": ["Bình Thuận", "Binh Thuan", "binhthuan"]
+  },
+  {
+    "id": "16",
+    "name": "Cà Mau",
+    "typeText": "Tỉnh",
+    "slug": "CAMAU",
+    "keywords": ["Cà Mau", "Ca Mau", "camau"]
+  },
+  {
+    "id": "17",
+    "name": "Cao Bằng",
+    "typeText": "Tỉnh",
+    "slug": "CAOBANG",
+    "keywords": ["Cao Bằng", "Cao Bang", "caobang"]
+  },
+  {
+    "id": "18",
+    "name": "Đắk Lắk",
+    "typeText": "Tỉnh",
+    "slug": "DAKLAK",
+    "keywords": ["Đắk Lắk", "Dak Lak", "daklak"]
+  },
+  {
+    "id": "19",
+    "name": "Đắk Nông",
+    "typeText": "Tỉnh",
+    "slug": "DAKNONG",
+    "keywords": ["Đắk Nông", "Dak Nong", "daknong"]
+  },
+  {
+    "id": "20",
+    "name": "Điện Biên",
+    "typeText": "Tỉnh",
+    "slug": "DIENBIEN",
+    "keywords": ["Điện Biên", "Dien Bien", "dienbien"]
+  },
+  {
+    "id": "21",
+    "name": "An Giang",
+    "typeText": "Tỉnh",
+    "slug": "ANGIANG",
+    "keywords": ["An Giang", "AG", "angiang"]
+  },
+  {
+    "id": "22",
+    "name": "Đồng Tháp",
+    "typeText": "Tỉnh",
+    "slug": "DONGTHAP",
+    "keywords": ["Đồng Tháp", "Dong Thap", "dongthap"]
+  },
+  {
+    "id": "23",
+    "name": "Gia Lai",
+    "typeText": "Tỉnh",
+    "slug": "GIALAI",
+    "keywords": ["Gia Lai", "Gia Lai", "gialai"]
+  },
+  {
+    "id": "24",
+    "name": "Hà Giang",
+    "typeText": "Tỉnh",
+    "slug": "HAGIANG",
+    "keywords": ["Hà Giang", "Ha Giang", "hagiang"]
+  },
+  {
+    "id": "25",
+    "name": "Hà Nam",
+    "typeText": "Tỉnh",
+    "slug": "HANAM",
+    "keywords": ["Hà Nam", "Ha Nam", "hanam"]
+  },
+  {
+    "id": "26",
+    "name": "Hà Tĩnh",
+    "typeText": "Tỉnh",
+    "slug": "HATINH",
+    "keywords": ["Hà Tĩnh", "Ha Tinh", "hatinh"]
+  },
+  {
+    "id": "27",
+    "name": "Hải Dương",
+    "typeText": "Tỉnh",
+    "slug": "HAIDUONG",
+    "keywords": ["Hải Dương", "Hai Duong", "haiduong"]
+  },
+  {
+    "id": "28",
+    "name": "Hải Phòng",
+    "typeText": "Thành phố",
+    "slug": "HAIPHONG",
+    "keywords": ["Hải Phòng", "Hai Phong", "haiphong"]
+  },
+  {
+    "id": "29",
+    "name": "Hậu Giang",
+    "typeText": "Tỉnh",
+    "slug": "HAUGIANG",
+    "keywords": ["Hậu Giang", "Hau Giang", "haugiang"]
+  },
+  {
+    "id": "30",
+    "name": "Hòa Bình",
+    "typeText": "Tỉnh",
+    "slug": "HOABINH",
+    "keywords": ["Hòa Bình", "Hoa Binh", "hoabinh"]
+  },
+  {
+    "id": "31",
+    "name": "Hưng Yên",
+    "typeText": "Tỉnh",
+    "slug": "HUNGYEN",
+    "keywords": ["Hưng Yên", "Hung Yen", "hungyen"]
+  },
+  {
+    "id": "32",
+    "name": "Khánh Hòa",
+    "typeText": "Tỉnh",
+    "slug": "KHANHHOA",
+    "keywords": ["Khánh Hòa", "Khanh Hoa", "khanhhoa"]
+  },
+  {
+    "id": "33",
+    "name": "Kiên Giang",
+    "typeText": "Tỉnh",
+    "slug": "KIENGIANG",
+    "keywords": ["Kiên Giang", "Kien Giang", "kiengiang"]
+  },
+  {
+    "id": "34",
+    "name": "Kon Tum",
+    "typeText": "Tỉnh",
+    "slug": "KONTUM",
+    "keywords": ["Kon Tum", "Kon Tum", "kontum"]
+  },
+  {
+    "id": "35",
+    "name": "Lai Châu",
+    "typeText": "Tỉnh",
+    "slug": "LAICHAU",
+    "keywords": ["Lai Châu", "Lai Chau", "laichau"]
+  },
+  {
+    "id": "36",
+    "name": "Lâm Đồng",
+    "typeText": "Tỉnh",
+    "slug": "LAMDONG",
+    "keywords": ["Lâm Đồng", "Lam Dong", "lamdong"]
+  },
+  {
+    "id": "37",
+    "name": "Lạng Sơn",
+    "typeText": "Tỉnh",
+    "slug": "LANGSON",
+    "keywords": ["Lạng Sơn", "Lang Son", "langson"]
+  },
+  {
+    "id": "38",
+    "name": "Lào Cai",
+    "typeText": "Tỉnh",
+    "slug": "LAOCAI",
+    "keywords": ["Lào Cai", "Lao Cai", "laocai"]
+  },
+  {
+    "id": "39",
+    "name": "Long An",
+    "typeText": "Tỉnh",
+    "slug": "LONGAN",
+    "keywords": ["Long An", "Long An", "longan"]
+  },
+  {
+    "id": "40",
+    "name": "Nam Định",
+    "typeText": "Tỉnh",
+    "slug": "NAMDINH",
+    "keywords": ["Nam Định", "Nam Dinh", "namdinh"]
+  },
+  {
+    "id": "41",
+    "name": "Nghệ An",
+    "typeText": "Tỉnh",
+    "slug": "NGHEAN",
+    "keywords": ["Nghệ An", "Nghe An", "nghean"]
+  },
+  {
+    "id": "42",
+    "name": "Ninh Bình",
+    "typeText": "Tỉnh",
+    "slug": "NINHBINH",
+    "keywords": ["Ninh Bình", "Ninh Binh", "ninhbinh"]
+  },
+  {
+    "id": "43",
+    "name": "Ninh Thuận",
+    "typeText": "Tỉnh",
+    "slug": "NINHTHUAN",
+    "keywords": ["Ninh Thuận", "Ninh Thuan", "ninhthuan"]
+  },
+  {
+    "id": "44",
+    "name": "Phú Thọ",
+    "typeText": "Tỉnh",
+    "slug": "PHUTHO",
+    "keywords": ["Phú Thọ", "Phu Tho", "phutho"]
+  },
+  {
+    "id": "45",
+    "name": "Phú Yên",
+    "typeText": "Tỉnh",
+    "slug": "PHUYEN",
+    "keywords": ["Phú Yên", "Phu Yen", "phuyen"]
+  },
+  {
+    "id": "46",
+    "name": "Quảng Bình",
+    "typeText": "Tỉnh",
+    "slug": "QUANGBINH",
+    "keywords": ["Quảng Bình", "Quang Binh", "quangbinh"]
+  },
+  {
+    "id": "47",
+    "name": "Quảng Nam",
+    "typeText": "Tỉnh",
+    "slug": "QUANGNAM",
+    "keywords": ["Quảng Nam", "Quang Nam", "quangnam"]
+  },
+  {
+    "id": "48",
+    "name": "Quảng Ngãi",
+    "typeText": "Tỉnh",
+    "slug": "QUANGNGAI",
+    "keywords": ["Quảng Ngãi", "Quang Ngai", "quangngai"]
+  },
+  {
+    "id": "49",
+    "name": "Quảng Ninh",
+    "typeText": "Tỉnh",
+    "slug": "QUANGNINH",
+    "keywords": ["Quảng Ninh", "Quang Ninh", "quangninh"]
+  },
+  {
+    "id": "50",
+    "name": "Quảng Trị",
+    "typeText": "Tỉnh",
+    "slug": "QUANGTRI",
+    "keywords": ["Quảng Trị", "Quang Tri", "quangtri"]
+  },
+  {
+    "id": "51",
+    "name": "Sóc Trăng",
+    "typeText": "Tỉnh",
+    "slug": "SOCTRANG",
+    "keywords": ["Sóc Trăng", "Soc Trang", "soctrang"]
+  },
+  {
+    "id": "52",
+    "name": "Sơn La",
+    "typeText": "Tỉnh",
+    "slug": "SONLA",
+    "keywords": ["Sơn La", "Son La", "sonla"]
+  },
+  {
+    "id": "53",
+    "name": "Tây Ninh",
+    "typeText": "Tỉnh",
+    "slug": "TAYNINH",
+    "keywords": ["Tây Ninh", "Tay Ninh", "tayninh"]
+  },
+  {
+    "id": "54",
+    "name": "Thái Bình",
+    "typeText": "Tỉnh",
+    "slug": "THAIBINH",
+    "keywords": ["Thái Bình", "Thai Binh", "thaibinh"]
+  },
+  {
+    "id": "55",
+    "name": "Thái Nguyên",
+    "typeText": "Tỉnh",
+    "slug": "THAINGUYEN",
+    "keywords": ["Thái Nguyên", "Thai Nguyen", "thainguyen"]
+  },
+  {
+    "id": "56",
+    "name": "Thanh Hóa",
+    "typeText": "Tỉnh",
+    "slug": "THANHHOA",
+    "keywords": ["Thanh Hóa", "Thanh Hoa", "thanhhoa"]
+  },
+  {
+    "id": "57",
+    "name": "Thừa Thiên Huế",
+    "typeText": "Tỉnh",
+    "slug": "THUATHIENHUE",
+    "keywords": ["Thừa Thiên Huế", "Thua Thien Hue", "thuathienhue"]
+  },
+  {
+    "id": "58",
+    "name": "Tiền Giang",
+    "typeText": "Tỉnh",
+    "slug": "TIENGIANG",
+    "keywords": ["Tiền Giang", "Tien Giang", "tiengiang"]
+  },
+  {
+    "id": "59",
+    "name": "Trà Vinh",
+    "typeText": "Tỉnh",
+    "slug": "TRAVINH",
+    "keywords": ["Trà Vinh", "Tra Vinh", "travinh"]
+  },
+  {
+    "id": "60",
+    "name": "Tuyên Quang",
+    "typeText": "Tỉnh",
+    "slug": "TUYENQUANG",
+    "keywords": ["Tuyên Quang", "Tuyen Quang", "tuyenquang"]
+  },
+  {
+    "id": "61",
+    "name": "Vĩnh Long",
+    "typeText": "Tỉnh",
+    "slug": "VINHLONG",
+    "keywords": ["Vĩnh Long", "Vinh Long", "vinhlong"]
+  },
+  {
+    "id": "62",
+    "name": "Vĩnh Phúc",
+    "typeText": "Tỉnh",
+    "slug": "VINHPHUC",
+    "keywords": ["Vĩnh Phúc", "Vinh Phuc", "vinhphuc"]
+  },
+  {
+    "id": "63",
+    "name": "Yên Bái",
+    "typeText": "Tỉnh",
+    "slug": "YENBAI",
+    "keywords": ["Yên Bái", "Yen Bai", "yenbai"]
+  }
+]
