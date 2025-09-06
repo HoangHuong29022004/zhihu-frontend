@@ -8,8 +8,9 @@ interface IProps {
 export async function generateMetadata({ params }: IProps) {
   const { chapter } = await params;
   return {
-    title: `Chapter - ${chapter}`,
-    description: `Đọc chapter ${chapter}`,
+    title: `Nội dung chapter - ${chapter}`,
+    description: `Thông tin chi tiết về ${chapter}`,
+    keywords: `Truyện tranh, chapter, ${chapter}`,
   };
 }
 
