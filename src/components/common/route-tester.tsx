@@ -9,7 +9,14 @@ import { ExternalLink, TestTube } from "lucide-react";
 
 export const RouteTester = () => {
   const [testUrl, setTestUrl] = useState("");
-  const [testResults, setTestResults] = useState<any[]>([]);
+  const [testResults, setTestResults] = useState<Array<{
+    route: string;
+    status: number | string;
+    statusText: string;
+    responseTime: number;
+    success: boolean;
+    timestamp: string;
+  }>>([]);
 
   const testRoutes = [
     "/",
@@ -153,13 +160,13 @@ export const RouteTester = () => {
         )}
 
         {/* Instructions */}
-        <div className="text-xs text-gray-600 bg-blue-50 p-3 rounded">
-          <strong>Instructions:</strong>
-          <br />• Click "Test" to check if route responds
-          <br />• Click external link icon to open in new tab
-          <br />• Green badge = route works, Red badge = route fails
-          <br />• Use this to test Facebook WebView routing issues
-        </div>
+          <div className="text-xs text-gray-600 bg-blue-50 p-3 rounded">
+            <strong>Instructions:</strong>
+            <br />• Click &quot;Test&quot; to check if route responds
+            <br />• Click external link icon to open in new tab
+            <br />• Green badge = route works, Red badge = route fails
+            <br />• Use this to test Facebook WebView routing issues
+          </div>
       </CardContent>
     </Card>
   );

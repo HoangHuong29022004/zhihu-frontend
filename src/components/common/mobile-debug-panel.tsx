@@ -8,8 +8,6 @@ import {
   Copy, 
   Bug, 
   Smartphone, 
-  Globe, 
-  Eye, 
   EyeOff,
   RefreshCw,
   Download
@@ -30,7 +28,11 @@ interface DebugInfo {
   cookies: string;
   localStorage: string;
   sessionStorage: string;
-  networkInfo?: any;
+  networkInfo?: {
+    effectiveType?: string;
+    downlink?: number;
+    rtt?: number;
+  };
   errors: string[];
 }
 
@@ -87,10 +89,11 @@ export const MobileDebugPanel = () => {
 
     // Try to get network info if available
     if ('connection' in navigator) {
+      const connection = (navigator as unknown as { connection?: { effectiveType?: string; downlink?: number; rtt?: number } }).connection;
       info.networkInfo = {
-        effectiveType: (navigator as any).connection?.effectiveType,
-        downlink: (navigator as any).connection?.downlink,
-        rtt: (navigator as any).connection?.rtt
+        effectiveType: connection?.effectiveType,
+        downlink: connection?.downlink,
+        rtt: connection?.rtt
       };
     }
 
@@ -126,7 +129,7 @@ Errors: ${debugInfo.errors.join('\n')}
     try {
       await navigator.clipboard.writeText(debugText);
       alert('Debug info copied to clipboard!');
-    } catch (err) {
+    } catch {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = debugText;

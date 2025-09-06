@@ -34,7 +34,7 @@ Viewport: ${info.viewportSize}
     try {
       await navigator.clipboard.writeText(debugInfo);
       alert('Debug info copied!');
-    } catch (err) {
+    } catch {
       // Fallback
       const textArea = document.createElement('textarea');
       textArea.value = debugInfo;
