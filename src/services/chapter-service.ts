@@ -8,7 +8,7 @@ import {
 
 export const getChapterDetailBySlug = async (
   request: string,
-  token: string
+  _token: string
 ) => {
   // Sử dụng dữ liệu demo thay vì gọi API
   try {
