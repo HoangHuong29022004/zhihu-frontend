@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export const AutoOpenBrowser = () => {
   const [showRedirectNotice, setShowRedirectNotice] = useState(false);
   const [isFBWebView, setIsFBWebView] = useState(false);
+  const [redirectAttempted, setRedirectAttempted] = useState(false);
 
   useEffect(() => {
     // Detect Facebook WebView with more comprehensive detection
@@ -39,6 +40,9 @@ export const AutoOpenBrowser = () => {
   }, []);
 
   const attemptRedirect = () => {
+    if (redirectAttempted) return;
+    setRedirectAttempted(true);
+    
     const currentUrl = window.location.href;
     
     // Facebook WebView has strict restrictions, try multiple approaches
