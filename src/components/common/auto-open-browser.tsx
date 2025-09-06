@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 export const AutoOpenBrowser = () => {
   const [showRedirectNotice, setShowRedirectNotice] = useState(false);
   const [isFBWebView, setIsFBWebView] = useState(false);
-  const [redirectAttempted, setRedirectAttempted] = useState(false);
 
   useEffect(() => {
     // Detect Facebook WebView with more comprehensive detection
@@ -20,26 +19,16 @@ export const AutoOpenBrowser = () => {
       const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
       
       if (!hasDismissed) {
-        // Show notice first, then attempt redirect
+        // Show notice immediately
         setShowRedirectNotice(true);
-        
-        // Auto redirect after 3 seconds
-        setTimeout(() => {
-          if (!redirectAttempted) {
-            attemptRedirect();
-          }
-        }, 3000);
       }
     }
-  }, [redirectAttempted]);
+  }, []);
 
   const attemptRedirect = () => {
-    if (redirectAttempted) return; // Prevent multiple attempts
-    setRedirectAttempted(true);
-    
     const currentUrl = window.location.href;
     
-    // Method 1: Try to open in external browser using intent URL (Android)
+    // Single method: Try to open in external browser using intent URL (Android)
     try {
       const intentUrl = `intent://${currentUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
       window.location.href = intentUrl;
@@ -47,66 +36,14 @@ export const AutoOpenBrowser = () => {
       console.log('Intent method failed:', error);
     }
     
-    // Method 2: Try window.open with specific parameters (only once)
+    // Fallback: Try window.open
     setTimeout(() => {
       try {
-        const newWindow = window.open(currentUrl, '_blank', 'noopener,noreferrer');
-        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-          // If popup was blocked, try alternative method
-          console.log('Popup blocked, trying alternative');
-        }
+        window.open(currentUrl, '_blank', 'noopener,noreferrer');
       } catch (error) {
         console.log('Window.open method failed:', error);
       }
-    }, 1000);
-    
-    // Method 3: Create and click a link with specific attributes (only once)
-    setTimeout(() => {
-      try {
-        const link = document.createElement('a');
-        link.href = currentUrl;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        
-        // Simulate user click
-        const clickEvent = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true
-        });
-        link.dispatchEvent(clickEvent);
-        
-        document.body.removeChild(link);
-      } catch (error) {
-        console.log('Link click method failed:', error);
-      }
-    }, 2000);
-    
-    // Method 4: Try to trigger external app with different schemes (only once)
-    setTimeout(() => {
-      try {
-        // Try different browser schemes
-        const schemes = [
-          `googlechrome://${currentUrl}`,
-          `firefox://open-url?url=${encodeURIComponent(currentUrl)}`,
-          `opera://open-url?url=${encodeURIComponent(currentUrl)}`
-        ];
-        
-        schemes.forEach((scheme, index) => {
-          setTimeout(() => {
-            try {
-              window.location.href = scheme;
-            } catch (error) {
-              console.log(`Scheme ${index} failed:`, error);
-            }
-          }, index * 500);
-        });
-      } catch (error) {
-        console.log('Scheme method failed:', error);
-      }
-    }, 3000);
+    }, 500);
   };
 
   const handleDismiss = () => {
@@ -114,10 +51,8 @@ export const AutoOpenBrowser = () => {
     setShowRedirectNotice(false);
   };
 
-  const handleManualRedirect = () => {
-    if (!redirectAttempted) {
-      attemptRedirect();
-    }
+  const handleRedirect = () => {
+    attemptRedirect();
     setShowRedirectNotice(false);
   };
 
@@ -144,14 +79,14 @@ export const AutoOpenBrowser = () => {
         
         <div className="space-y-3">
           <button
-            onClick={handleManualRedirect}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+            onClick={handleRedirect}
+            className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
           >
             Mở trong trình duyệt
           </button>
           <button
             onClick={handleDismiss}
-            className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+            className="w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors text-sm"
           >
             Tiếp tục ở đây
           </button>
