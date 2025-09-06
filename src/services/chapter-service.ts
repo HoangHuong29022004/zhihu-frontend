@@ -31,7 +31,7 @@ export const getChapterDetailBySlug = async (
         statusCode: 404,
         success: false,
         message: "Chapter not found",
-        data: null
+        data: null as any
       };
     }
   } catch (error: any) {
@@ -40,7 +40,7 @@ export const getChapterDetailBySlug = async (
       statusCode: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null as any
     };
   }
 };

@@ -72,7 +72,7 @@ export const getComicDetailBySlug = async (request: string, _token: string) => {
         statusCode: 404,
         success: false,
         message: "Comic not found",
-        data: null
+        data: null as any
       };
     }
   } catch (error: any) {
@@ -81,7 +81,7 @@ export const getComicDetailBySlug = async (request: string, _token: string) => {
       statusCode: 500,
       success: false,
       message: "Internal server error",
-      data: null
+      data: null as any
     };
   }
 };

@@ -26,56 +26,46 @@ export const DEMO_COMIC_DETAIL: IComicDetail = {
       id: "1",
       title: "Chương 1: Khởi đầu",
       slug: "chuong-1-khoi-dau",
-      content: "Nội dung chương 1...",
       unitPrice: 0,
       isPurchased: true,
       totalViews: 5000,
       createdAt: "2024-01-15T10:00:00Z",
-      updatedAt: "2024-01-15T10:00:00Z"
     },
     {
       id: "2", 
       title: "Chương 2: Gặp gỡ",
       slug: "chuong-2-gap-go",
-      content: "Nội dung chương 2...",
       unitPrice: 0,
       isPurchased: true,
       totalViews: 4800,
       createdAt: "2024-01-16T10:00:00Z",
-      updatedAt: "2024-01-16T10:00:00Z"
     },
     {
       id: "3",
       title: "Chương 3: Thử thách",
       slug: "chuong-3-thu-thach",
-      content: "Nội dung chương 3...",
       unitPrice: 0,
       isPurchased: true,
       totalViews: 4600,
       createdAt: "2024-01-17T10:00:00Z",
-      updatedAt: "2024-01-17T10:00:00Z"
     },
     {
       id: "4",
       title: "Chương 4: Bí mật",
       slug: "chuong-4-bi-mat",
-      content: "Nội dung chương 4...",
       unitPrice: 50,
       isPurchased: false,
       totalViews: 4400,
       createdAt: "2024-01-18T10:00:00Z",
-      updatedAt: "2024-01-18T10:00:00Z"
     },
     {
       id: "5",
       title: "Chương 5: Khám phá",
       slug: "chuong-5-kham-pha",
-      content: "Nội dung chương 5...",
       unitPrice: 50,
       isPurchased: false,
       totalViews: 4200,
       createdAt: "2024-01-19T10:00:00Z",
-      updatedAt: "2024-01-19T10:00:00Z"
     }
   ],
   audios: [
@@ -83,25 +73,21 @@ export const DEMO_COMIC_DETAIL: IComicDetail = {
       id: "1",
       title: "Audio Chương 1",
       slug: "audio-chuong-1",
-      audioUrl: "/audio/demo-audio-1.mp3",
       duration: 1800,
       unitPrice: 0,
       isPurchased: true,
       totalViews: 2500,
       createdAt: "2024-01-15T10:00:00Z",
-      updatedAt: "2024-01-15T10:00:00Z"
     },
     {
       id: "2",
       title: "Audio Chương 2", 
       slug: "audio-chuong-2",
-      audioUrl: "/audio/demo-audio-2.mp3",
       duration: 1950,
       unitPrice: 0,
       isPurchased: true,
       totalViews: 2300,
       createdAt: "2024-01-16T10:00:00Z",
-      updatedAt: "2024-01-16T10:00:00Z"
     }
   ]
 };
@@ -127,23 +113,19 @@ export const DEMO_COMIC_DETAILS: Record<string, IComicDetail> = {
         id: "6",
         title: "Chương 1: Thiên tài xuất hiện",
         slug: "chuong-1-thien-tai-xuat-hien",
-        content: "Nội dung chương 1 của Thiên Tài Tiểu Thư...",
         unitPrice: 0,
         isPurchased: true,
         totalViews: 3500,
         createdAt: "2024-01-10T14:30:00Z",
-        updatedAt: "2024-01-10T14:30:00Z"
       },
       {
         id: "7",
         title: "Chương 2: Khả năng đặc biệt",
         slug: "chuong-2-kha-nang-dac-biet",
-        content: "Nội dung chương 2 của Thiên Tài Tiểu Thư...",
         unitPrice: 0,
         isPurchased: true,
         totalViews: 3200,
         createdAt: "2024-01-11T14:30:00Z",
-        updatedAt: "2024-01-11T14:30:00Z"
       }
     ]
   },
@@ -165,12 +147,10 @@ export const DEMO_COMIC_DETAILS: Record<string, IComicDetail> = {
         id: "8",
         title: "Chương 1: Nhập học",
         slug: "chuong-1-nhap-hoc",
-        content: "Nội dung chương 1 của Bá Vương Học Viện...",
         unitPrice: 0,
         isPurchased: true,
         totalViews: 6000,
         createdAt: "2024-01-20T09:15:00Z",
-        updatedAt: "2024-01-20T09:15:00Z"
       }
     ]
   }

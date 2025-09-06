@@ -30,8 +30,7 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicId: "1",
     comicTitle: "Lục Linh Châu - 13 Tuổi Kiếp Khổ Trọn",
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
-    createdAt: "2024-01-15T10:00:00Z",
-    updatedAt: "2024-01-15T10:00:00Z"
+    createdAt: "2024-01-15T10:00:00Z"
   },
   
   "chuong-2-gap-go": {
@@ -63,8 +62,7 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicId: "1",
     comicTitle: "Lục Linh Châu - 13 Tuổi Kiếp Khổ Trọn",
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
-    createdAt: "2024-01-16T10:00:00Z",
-    updatedAt: "2024-01-16T10:00:00Z"
+    createdAt: "2024-01-16T10:00:00Z"
   },
   
   "chuong-3-thu-thach": {
@@ -96,8 +94,7 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicId: "1",
     comicTitle: "Lục Linh Châu - 13 Tuổi Kiếp Khổ Trọn",
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
-    createdAt: "2024-01-17T10:00:00Z",
-    updatedAt: "2024-01-17T10:00:00Z"
+    createdAt: "2024-01-17T10:00:00Z"
   },
   
   "chuong-4-bi-mat": {
@@ -129,8 +126,7 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicId: "1",
     comicTitle: "Lục Linh Châu - 13 Tuổi Kiếp Khổ Trọn",
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
-    createdAt: "2024-01-18T10:00:00Z",
-    updatedAt: "2024-01-18T10:00:00Z"
+    createdAt: "2024-01-18T10:00:00Z"
   },
   
   "chuong-5-kham-pha": {
@@ -162,7 +158,6 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicId: "1",
     comicTitle: "Lục Linh Châu - 13 Tuổi Kiếp Khổ Trọn",
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
-    createdAt: "2024-01-19T10:00:00Z",
-    updatedAt: "2024-01-19T10:00:00Z"
+    createdAt: "2024-01-19T10:00:00Z"
   }
 };
