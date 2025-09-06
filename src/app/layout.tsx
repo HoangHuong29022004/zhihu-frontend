@@ -8,7 +8,6 @@ import { Toaster } from "@/components/ui/toaster";
 import QueryProvider from "@/providers/query-provider";
 import { AdSenseScript } from "@/components/common/adsense";
 import { ADSENSE_CONFIG, shouldShowAds } from "@/configs/adsense";
-import { AutoOpenBrowser } from "@/components/common/auto-open-browser";
 // import { FacebookDebug } from "@/components/common/facebook-debug";
 
 const geistSans = Geist({
@@ -75,7 +74,6 @@ export default function RootLayout({
         
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
-        <AutoOpenBrowser />
         {/* <FacebookDebug /> */}
         <QueryProvider>
           <NextTopLoader
