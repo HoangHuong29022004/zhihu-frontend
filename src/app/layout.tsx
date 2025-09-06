@@ -84,7 +84,10 @@ export default function RootLayout({
                   var currentUrl = window.location.href;
                   var hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
                   
-                  if (!hasRedirected) {
+                  // Only redirect for non-chapter pages to avoid interfering with chapter loading
+                  var isChapterPage = currentUrl.includes('/comic/') && currentUrl.split('/').length >= 5;
+                  
+                  if (!hasRedirected && !isChapterPage) {
                     sessionStorage.setItem('fb-redirect-attempted', 'true');
                     
                     // Try multiple aggressive redirect methods immediately

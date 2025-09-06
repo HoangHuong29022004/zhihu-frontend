@@ -20,13 +20,20 @@ export const AutoOpenBrowser = () => {
       const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
       
       if (!hasDismissed && !hasRedirected) {
-        // Auto attempt redirect immediately
-        attemptRedirect();
+        // Check if this is a chapter page
+        const currentUrl = window.location.href;
+        const isChapterPage = currentUrl.includes('/comic/') && currentUrl.split('/').length >= 5;
         
-        // Show notice after 1 second
+        if (!isChapterPage) {
+          // Auto attempt redirect immediately for non-chapter pages
+          attemptRedirect();
+        }
+        
+        // Show notice after delay - longer for chapter pages to allow content loading
+        const delay = isChapterPage ? 3000 : 1000; // 3 seconds for chapter pages, 1 second for others
         setTimeout(() => {
           setShowRedirectNotice(true);
-        }, 1000);
+        }, delay);
       }
     }
   }, []);
