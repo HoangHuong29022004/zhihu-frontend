@@ -1,45 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export const AutoOpenBrowser = () => {
   const [showRedirectNotice, setShowRedirectNotice] = useState(false);
   const [isFBWebView, setIsFBWebView] = useState(false);
   const [redirectAttempted, setRedirectAttempted] = useState(false);
 
-  useEffect(() => {
-    // Detect Facebook WebView with more comprehensive detection
-    const userAgent = navigator.userAgent;
-    const isFB = /FBAN|FBAV|FB_IAB|FB4A|Instagram|Twitter|Line|WhatsApp|Telegram|WeChat/i.test(userAgent);
-    const isInApp = /wv|WebView/i.test(userAgent);
-    
-    if (isFB || isInApp) {
-      setIsFBWebView(true);
-      
-      // Check if user has already dismissed auto-redirect
-      const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
-      const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
-      
-      if (!hasDismissed && !hasRedirected) {
-        // Check if this is a chapter page
-        const currentUrl = window.location.href;
-        const isChapterPage = currentUrl.includes('/comic/') && currentUrl.split('/').length >= 5;
-        
-        if (!isChapterPage) {
-          // Auto attempt redirect immediately for non-chapter pages
-          attemptRedirect();
-        }
-        
-        // Show notice after delay - longer for chapter pages to allow content loading
-        const delay = isChapterPage ? 3000 : 1000; // 3 seconds for chapter pages, 1 second for others
-        setTimeout(() => {
-          setShowRedirectNotice(true);
-        }, delay);
-      }
-    }
-  }, []);
-
-  const attemptRedirect = () => {
+  const attemptRedirect = useCallback(() => {
     if (redirectAttempted) return;
     setRedirectAttempted(true);
     
@@ -84,7 +52,39 @@ export const AutoOpenBrowser = () => {
         }
       }
     }
-  };
+  }, [redirectAttempted]);
+
+  useEffect(() => {
+    // Detect Facebook WebView with more comprehensive detection
+    const userAgent = navigator.userAgent;
+    const isFB = /FBAN|FBAV|FB_IAB|FB4A|Instagram|Twitter|Line|WhatsApp|Telegram|WeChat/i.test(userAgent);
+    const isInApp = /wv|WebView/i.test(userAgent);
+    
+    if (isFB || isInApp) {
+      setIsFBWebView(true);
+      
+      // Check if user has already dismissed auto-redirect
+      const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
+      const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
+      
+      if (!hasDismissed && !hasRedirected) {
+        // Check if this is a chapter page
+        const currentUrl = window.location.href;
+        const isChapterPage = currentUrl.includes('/comic/') && currentUrl.split('/').length >= 5;
+        
+        if (!isChapterPage) {
+          // Auto attempt redirect immediately for non-chapter pages
+          attemptRedirect();
+        }
+        
+        // Show notice after delay - longer for chapter pages to allow content loading
+        const delay = isChapterPage ? 3000 : 1000; // 3 seconds for chapter pages, 1 second for others
+        setTimeout(() => {
+          setShowRedirectNotice(true);
+        }, delay);
+      }
+    }
+  }, [attemptRedirect]);
 
   const handleDismiss = () => {
     localStorage.setItem('fb-auto-open-dismissed', 'true');

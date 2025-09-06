@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export const FacebookDebug = () => {
-  const [debugInfo, setDebugInfo] = useState<any>(null);
+  const [debugInfo, setDebugInfo] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
