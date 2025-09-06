@@ -12,48 +12,44 @@ export const AutoOpenBrowser = () => {
     const isFB = /FBAN|FBAV|FB_IAB|FB4A|Instagram|Twitter|Line|WhatsApp|Telegram|WeChat/i.test(userAgent);
     const isInApp = /wv|WebView/i.test(userAgent);
     
-    console.log('User Agent:', userAgent);
-    console.log('Is Facebook WebView:', isFB);
-    console.log('Is In-App Browser:', isInApp);
-    
     if (isFB || isInApp) {
       setIsFBWebView(true);
       
       // Check if user has already dismissed auto-redirect
       const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
+      const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
       
-      console.log('Has dismissed:', hasDismissed);
-      
-      if (!hasDismissed) {
+      if (!hasDismissed && !hasRedirected) {
         // Show notice immediately
         setShowRedirectNotice(true);
-        console.log('Showing redirect notice');
+        
+        // Auto attempt redirect after 2 seconds
+        setTimeout(() => {
+          attemptRedirect();
+        }, 2000);
       }
     }
   }, []);
 
   const attemptRedirect = () => {
     const currentUrl = window.location.href;
-    console.log('Attempting redirect to:', currentUrl);
     
     // Method 1: Try to force external browser with multiple schemes
     try {
       // Try Chrome first
       const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
-      console.log('Trying Chrome URL:', chromeUrl);
       window.location.href = chromeUrl;
     } catch (error) {
-      console.log('Chrome method failed:', error);
+      // Silent fail
     }
     
     // Method 2: Try Firefox
     setTimeout(() => {
       try {
         const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
-        console.log('Trying Firefox URL:', firefoxUrl);
         window.location.href = firefoxUrl;
       } catch (error) {
-        console.log('Firefox method failed:', error);
+        // Silent fail
       }
     }, 200);
     
@@ -61,10 +57,9 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         const operaUrl = `opera://open-url?url=${encodeURIComponent(currentUrl)}`;
-        console.log('Trying Opera URL:', operaUrl);
         window.location.href = operaUrl;
       } catch (error) {
-        console.log('Opera method failed:', error);
+        // Silent fail
       }
     }, 400);
     
@@ -72,10 +67,9 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         const samsungUrl = `samsungbrowser://navigate?url=${encodeURIComponent(currentUrl)}`;
-        console.log('Trying Samsung URL:', samsungUrl);
         window.location.href = samsungUrl;
       } catch (error) {
-        console.log('Samsung method failed:', error);
+        // Silent fail
       }
     }, 600);
     
@@ -83,10 +77,9 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         const edgeUrl = `microsoft-edge://${currentUrl}`;
-        console.log('Trying Edge URL:', edgeUrl);
         window.location.href = edgeUrl;
       } catch (error) {
-        console.log('Edge method failed:', error);
+        // Silent fail
       }
     }, 800);
     
@@ -97,12 +90,11 @@ export const AutoOpenBrowser = () => {
         iframe.style.display = 'none';
         iframe.src = currentUrl;
         document.body.appendChild(iframe);
-        console.log('Trying iframe method');
         setTimeout(() => {
           document.body.removeChild(iframe);
         }, 1000);
       } catch (error) {
-        console.log('Iframe method failed:', error);
+        // Silent fail
       }
     }, 1000);
     
@@ -116,10 +108,9 @@ export const AutoOpenBrowser = () => {
         form.style.display = 'none';
         document.body.appendChild(form);
         form.submit();
-        console.log('Trying form method');
         document.body.removeChild(form);
       } catch (error) {
-        console.log('Form method failed:', error);
+        // Silent fail
       }
     }, 1200);
     
@@ -140,10 +131,9 @@ export const AutoOpenBrowser = () => {
           link.dispatchEvent(event);
         });
         
-        console.log('Trying link click method');
         document.body.removeChild(link);
       } catch (error) {
-        console.log('Link click method failed:', error);
+        // Silent fail
       }
     }, 1400);
     
@@ -151,12 +141,29 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         // Try to change location to trigger external app
-        console.log('Trying location change method');
         window.location.href = currentUrl;
       } catch (error) {
-        console.log('Location change method failed:', error);
+        // Silent fail
       }
     }, 1600);
+    
+    // Method 10: Try to trigger external app with window.open
+    setTimeout(() => {
+      try {
+        window.open(currentUrl, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        // Silent fail
+      }
+    }, 1800);
+    
+    // Method 11: Try to trigger external app with location.replace
+    setTimeout(() => {
+      try {
+        window.location.replace(currentUrl);
+      } catch (error) {
+        // Silent fail
+      }
+    }, 2000);
   };
 
   const handleDismiss = () => {
