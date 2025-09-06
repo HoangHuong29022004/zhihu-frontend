@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import QueryProvider from "@/providers/query-provider";
 import { AdSenseScript } from "@/components/common/adsense";
 import { ADSENSE_CONFIG, shouldShowAds } from "@/configs/adsense";
+import { FacebookWebViewDetector } from "@/components/common/facebook-webview-detector";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +25,16 @@ export const metadata: Metadata = {
   description: `Đọc truyện chữ, nghe audio truyện, đăng tác phẩm và kiếm thu nhập cùng Thanh Nhạc Châu. Nền tảng dành cho độc giả và người sáng tạo nội dung.`,
   keywords:
     "đọc truyện tranh, manga, manhua, manhwa, truyện tranh online, truyện tranh miễn phí, đọc manga, truyện tranh hot, cập nhật truyện tranh",
+  viewport: "width=device-width, initial-scale=1.0, user-scalable=no",
   other: {
     "google-adsense-account": ADSENSE_CONFIG.CLIENT_ID,
+    "format-detection": "telephone=no",
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "apple-mobile-web-app-title": APP_INFO.appName,
+    "msapplication-TileColor": "#F472B6",
+    "theme-color": "#F472B6",
   },
 };
 
@@ -46,8 +55,25 @@ export default function RootLayout({
           name="google-adsense-account"
           content={ADSENSE_CONFIG.CLIENT_ID}
         />
+        {/* Facebook WebView compatibility */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content={APP_INFO.appName} />
+        <meta name="msapplication-TileColor" content="#F472B6" />
+        <meta name="theme-color" content="#F472B6" />
+        {/* Facebook Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={APP_INFO.appName} />
+        <meta property="og:locale" content="vi_VN" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@thanhnhacchau" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
+        <FacebookWebViewDetector />
         <QueryProvider>
           <NextTopLoader
             speed={800}

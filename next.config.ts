@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+  // Ensure proper handling of dynamic routes
+  trailingSlash: false,
   images: {
     remotePatterns: [
       {
@@ -55,7 +57,7 @@ const nextConfig: NextConfig = {
     ],
     domains: ["api.linhthanhnguyet.com", "api.thanhnhacchau.com"],
   },
-  // Cấu hình cho Google AdSense
+  // Cấu hình cho Google AdSense và Facebook WebView
   async headers() {
     return [
       {
@@ -68,6 +70,19 @@ const nextConfig: NextConfig = {
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
+          },
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          // Facebook WebView compatibility
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
