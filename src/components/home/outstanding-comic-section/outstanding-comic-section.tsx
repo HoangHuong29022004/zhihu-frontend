@@ -17,7 +17,7 @@ const OutstandingComicSection = () => {
   const listComic = EXTENDED_DEMO_COMICS.slice(8, 24);
 
   return (
-    <section ref={ref} id="section-top-outstanding">
+    <section id="section-top-outstanding">
       <SectionWrapper>
         {/* Header */}
         <div className="flex max-sm:flex-wrap justify-between mb-4 items-center gap-2">

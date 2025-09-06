@@ -7,7 +7,7 @@ import { useState } from "react";
 import { NoDataBase } from "@/components/common/utils/no-data";
 import ComicSkeleton from "./comic-skeleton";
 import Link from "next/link";
-import { ComicItem } from "./";
+import { LastCompletedComicItem } from "./";
 import { usePagination } from "@/hooks/use-pagination";
 import { EXTENDED_DEMO_COMICS } from "@/data/mocks/demo-comics";
 
@@ -52,7 +52,7 @@ const LastCompletedComicSection = () => {
         ) : paginatedData?.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
             {paginatedData.map((comic, index) => (
-              <ComicItem
+              <LastCompletedComicItem
                 key={index}
                 data={comic}
                 index={index}
