@@ -159,10 +159,10 @@ export default function RedirectPage() {
             Hướng dẫn:
           </h3>
           <div className="text-sm text-yellow-700 text-left space-y-1">
-            <p>1. Bấm "Copy Link"</p>
+            <p>1. Bấm &quot;Copy Link&quot;</p>
             <p>2. Mở Chrome hoặc Safari</p>
             <p>3. Paste link vào thanh địa chỉ</p>
-            <p>4. Hoặc bấm menu Facebook → "Mở trong trình duyệt"</p>
+            <p>4. Hoặc bấm menu Facebook → &quot;Mở trong trình duyệt&quot;</p>
           </div>
         </div>
       </div>
