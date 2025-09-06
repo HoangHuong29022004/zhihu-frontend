@@ -1,6 +1,5 @@
 import React from "react";
 import ChapterDetailPage from "./chapter-detail-page";
-import NotFound from "@/app/not-found";
 
 interface IProps {
   params: Promise<{ chapter: string }>;
@@ -17,11 +16,8 @@ export async function generateMetadata({ params }: IProps) {
 
 const ChapterDetail = async ({ params }: IProps) => {
   const { chapter } = await params;
-  if (!chapter) {
-    return <NotFound />;
-  }
-
-  return <ChapterDetailPage chapter={chapter} />;
+  
+  return <ChapterDetailPage chapter={chapter || ""} />;
 };
 
 export default ChapterDetail;

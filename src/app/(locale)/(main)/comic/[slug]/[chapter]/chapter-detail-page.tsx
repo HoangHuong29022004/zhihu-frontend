@@ -128,47 +128,21 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
 
   useEffect(() => {
     async function fetchDetails() {
+      if (!chapter) return;
+      
       try {
         setLoading(true);
         const token = getAccessToken();
         
-        
-        // Thử với slug gốc trước
-        let res: IApiResponse<IChapterDetail> = await getChapterDetailBySlug(
+        const res: IApiResponse<IChapterDetail> = await getChapterDetailBySlug(
           chapter,
           token ?? ""
         );
         
-        // Nếu fail và chapter có dấu gạch ngang, thử với slug có dấu chấm
-        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('-')) {
-          const originalSlug = chapter.replace(/-/g, '.');
-          res = await getChapterDetailBySlug(
-            originalSlug,
-            token ?? ""
-          );
-        }
-        
-        // Nếu vẫn fail và chapter có dấu chấm, thử với slug không có dấu chấm
-        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('.')) {
-          const fixedSlug = chapter.replace(/\./g, '-');
-          res = await getChapterDetailBySlug(
-            fixedSlug,
-            token ?? ""
-          );
-        }
-        
         if (res && isSuccessResponse(res?.statusCode, res?.success)) {
           setData(res.data);
         } else {
-          // Show specific error message based on API response
-          if (res?.statusCode === 500) {
-            setError("Lỗi server. Vui lòng thử lại sau.");
-          } else if (res?.statusCode === 404) {
-            setError("Chương này không tồn tại hoặc đã bị xóa.");
-          } else {
-            setError("Không thể tải chương. Vui lòng kiểm tra kết nối mạng.");
-          }
-          
+          setError("Không thể tải chương. Vui lòng thử lại sau.");
         }
       } catch (err) {
         console.error("Error when fetching chapter details: ", err);
