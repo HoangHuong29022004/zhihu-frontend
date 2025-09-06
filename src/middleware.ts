@@ -16,6 +16,16 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get("user-agent") || "";
   const isFacebookWebView = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
 
+  // Tạo base URL an toàn
+  const baseUrl = request.nextUrl.origin;
+
+  // Facebook WebView redirect - redirect tất cả requests từ Facebook WebView
+  if (isFacebookWebView && currentPath !== "/redirect") {
+    const redirectUrl = new URL("/redirect", baseUrl);
+    redirectUrl.searchParams.set("url", request.url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
   // Kiểm tra trạng thái đăng nhập từ cookies
   const accessToken = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;
@@ -25,9 +35,6 @@ export function middleware(request: NextRequest) {
   const isPrivateRoute = privateRoutes.some(
     (route) => currentPath === route || currentPath.startsWith(`${route}/`)
   );
-
-  // Tạo base URL an toàn
-  const baseUrl = request.nextUrl.origin;
 
   // Nếu chưa đăng nhập và cố gắng truy cập privateRoutes
   if (!isLoggedIn && isPrivateRoute) {

@@ -1,90 +1,28 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 export const AutoOpenBrowser = () => {
   const [showRedirectNotice, setShowRedirectNotice] = useState(false);
   const [isFBWebView, setIsFBWebView] = useState(false);
-  const [redirectAttempted, setRedirectAttempted] = useState(false);
-
-  const attemptRedirect = useCallback(() => {
-    if (redirectAttempted) return;
-    setRedirectAttempted(true);
-    
-    const currentUrl = window.location.href;
-    
-    // Facebook WebView has strict restrictions, try multiple approaches
-    try {
-      // Method 1: Direct window.open (most likely to work with user interaction)
-      const newWindow = window.open(currentUrl, '_blank', 'noopener,noreferrer');
-      if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-        // Method 2: Try with different parameters
-        window.open(currentUrl, '_blank');
-      }
-    } catch {
-      // Method 3: Try direct location change
-      try {
-        window.location.href = currentUrl;
-      } catch {
-        // Method 4: Create and click link with user interaction
-        try {
-          const link = document.createElement('a');
-          link.href = currentUrl;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.style.display = 'none';
-          document.body.appendChild(link);
-          
-          // Simulate user click with multiple events
-          const clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          link.dispatchEvent(clickEvent);
-          
-          setTimeout(() => {
-            document.body.removeChild(link);
-          }, 100);
-        } catch {
-          // Method 5: Last resort - show instruction to user
-          alert('Vui lòng copy link này và mở trong trình duyệt ngoài:\n' + currentUrl);
-        }
-      }
-    }
-  }, [redirectAttempted]);
 
   useEffect(() => {
-    // Detect Facebook WebView with more comprehensive detection
+    // Detect Facebook WebView
     const userAgent = navigator.userAgent;
-    const isFB = /FBAN|FBAV|FB_IAB|FB4A|Instagram|Twitter|Line|WhatsApp|Telegram|WeChat/i.test(userAgent);
-    const isInApp = /wv|WebView/i.test(userAgent);
+    const isFB = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
     
-    if (isFB || isInApp) {
+    if (isFB) {
       setIsFBWebView(true);
       
       // Check if user has already dismissed auto-redirect
       const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
-      const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
       
-      if (!hasDismissed && !hasRedirected) {
-        // Check if this is a chapter page
-        const currentUrl = window.location.href;
-        const isChapterPage = currentUrl.includes('/comic/') && currentUrl.split('/').length >= 5;
-        
-        if (!isChapterPage) {
-          // Auto attempt redirect immediately for non-chapter pages
-          attemptRedirect();
-        }
-        
-        // Show notice after delay - longer for chapter pages to allow content loading
-        const delay = isChapterPage ? 3000 : 1000; // 3 seconds for chapter pages, 1 second for others
-        setTimeout(() => {
-          setShowRedirectNotice(true);
-        }, delay);
+      if (!hasDismissed) {
+        // Show notice immediately for Facebook WebView users
+        setShowRedirectNotice(true);
       }
     }
-  }, [attemptRedirect]);
+  }, []);
 
   const handleDismiss = () => {
     localStorage.setItem('fb-auto-open-dismissed', 'true');
@@ -92,8 +30,9 @@ export const AutoOpenBrowser = () => {
   };
 
   const handleRedirect = () => {
-    attemptRedirect();
-    setShowRedirectNotice(false);
+    // Redirect to our dedicated redirect page
+    const currentUrl = window.location.href;
+    window.location.href = `/redirect?url=${encodeURIComponent(currentUrl)}`;
   };
 
   const handleCopyLink = async () => {
