@@ -29,8 +29,8 @@ const ComicDetailUserPage = ({ comicSlug }: IProps) => {
   const [activeTab, setActiveTab] = useState<"chapters" | "audios">("chapters");
 
   // Sort chapters by extracting the first number from title
-  const sortedChapters = data?.data?.chapters
-    ? [...data.data.chapters]
+  const sortedChapters = data && (data as any).data && (data as any).data.chapters
+    ? [...(data as any).data.chapters]
         .sort((a, b) => {
           const getChapterNumber = (title: string) => {
             const match = title.match(/\d+/);
@@ -50,10 +50,10 @@ const ComicDetailUserPage = ({ comicSlug }: IProps) => {
         <div className="flex items-center justify-center h-[70vh]">
           <LoadingSpinner />
         </div>
-      ) : data && data?.data ? (
+      ) : data && (data as any)?.data ? (
         <div>
           {/* Header Section */}
-          <HeaderComicDetails data={data?.data} className="mt-0" />
+          <HeaderComicDetails data={(data as any)?.data} className="mt-0" />
 
           {/* Tabs Section */}
           <Tabs
@@ -67,17 +67,17 @@ const ComicDetailUserPage = ({ comicSlug }: IProps) => {
             <TabsList className="grid w-full grid-cols-2 mb-6">
               <TabsTrigger value="chapters" className="flex items-center gap-2">
                 <BookOpen size={20} />
-                Chương ({data.data.chapters.length})
+                Chương ({(data as any).data.chapters.length})
               </TabsTrigger>
               <TabsTrigger value="audios" className="flex items-center gap-2">
                 <Headphones size={20} />
-                Audio ({data.data.audios?.length || 0})
+                Audio ({(data as any).data.audios?.length || 0})
               </TabsTrigger>
             </TabsList>
             <TabsContent value="chapters">
               <ChapterSectionUser
                 data={{
-                  ...data.data,
+                  ...(data as any).data,
                   chapters: sortedChapters,
                 }}
                 onDelete={(item, options) => {
@@ -91,7 +91,7 @@ const ComicDetailUserPage = ({ comicSlug }: IProps) => {
             <TabsContent value="audios">
               <AudioSectionUser
                 data={{
-                  ...data.data,
+                  ...(data as any).data,
                   chapters: sortedChapters,
                 }}
                 onDelete={(item, options) => {

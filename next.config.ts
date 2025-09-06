@@ -57,46 +57,48 @@ const nextConfig: NextConfig = {
     ],
     domains: ["api.linhthanhnguyet.com", "api.thanhnhacchau.com"],
   },
-  // Cấu hình cho Google AdSense và Facebook WebView
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          // Facebook WebView compatibility
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
-  // Cấu hình CSP cho AdSense
-  async rewrites() {
-    return [
-      {
-        source: "/ads.txt",
-        destination: "/api/ads.txt",
-      },
-    ];
-  },
+  // Cấu hình cho Google AdSense và Facebook WebView (chỉ hoạt động với server)
+  ...(process.env.NODE_ENV !== 'production' && {
+    async headers() {
+      return [
+        {
+          source: "/(.*)",
+          headers: [
+            {
+              key: "X-Frame-Options",
+              value: "SAMEORIGIN",
+            },
+            {
+              key: "X-Content-Type-Options",
+              value: "nosniff",
+            },
+            {
+              key: "X-XSS-Protection",
+              value: "1; mode=block",
+            },
+            {
+              key: "Referrer-Policy",
+              value: "strict-origin-when-cross-origin",
+            },
+            // Facebook WebView compatibility
+            {
+              key: "Cache-Control",
+              value: "public, max-age=31536000, immutable",
+            },
+          ],
+        },
+      ];
+    },
+    // Cấu hình CSP cho AdSense
+    async rewrites() {
+      return [
+        {
+          source: "/ads.txt",
+          destination: "/api/ads.txt",
+        },
+      ];
+    },
+  }),
 };
 
 export default nextConfig;

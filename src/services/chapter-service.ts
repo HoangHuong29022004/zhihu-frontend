@@ -8,7 +8,7 @@ import {
 
 export const getChapterDetailBySlug = async (
   request: string,
-  _token: string
+  _token: string // eslint-disable-line @typescript-eslint/no-unused-vars
 ) => {
   // Sử dụng dữ liệu demo thay vì gọi API
   try {

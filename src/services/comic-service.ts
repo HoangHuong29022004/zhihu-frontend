@@ -50,7 +50,7 @@ export const getHotComics = async (query: IQueryOptions) => {
   }
 };
 
-export const getComicDetailBySlug = async (request: string, _token: string) => {
+export const getComicDetailBySlug = async (request: string, _token: string) => { // eslint-disable-line @typescript-eslint/no-unused-vars
   // Sử dụng dữ liệu demo thay vì gọi API
   try {
     const { DEMO_COMIC_DETAILS } = await import("@/data/mocks/demo-comic-detail");
