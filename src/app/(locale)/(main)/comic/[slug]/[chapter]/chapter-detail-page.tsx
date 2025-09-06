@@ -132,12 +132,35 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
       try {
         setLoading(true);
         const token = getAccessToken();
-        const res: IApiResponse<IChapterDetail> = await getChapterDetailBySlug(
+        
+        // Thử với slug gốc trước
+        let res: IApiResponse<IChapterDetail> = await getChapterDetailBySlug(
           chapter,
           token ?? ""
         );
+        
+        // Nếu fail và chapter có dấu chấm, thử với slug có dấu chấm
+        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('-')) {
+          const originalSlug = chapter.replace(/-/g, '.');
+          res = await getChapterDetailBySlug(
+            originalSlug,
+            token ?? ""
+          );
+        }
+        
+        // Nếu vẫn fail và chapter không có dấu chấm, thử với slug không có dấu chấm
+        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && !chapter.includes('.')) {
+          const fixedSlug = chapter.replace(/\./g, '-');
+          res = await getChapterDetailBySlug(
+            fixedSlug,
+            token ?? ""
+          );
+        }
+        
         if (res && isSuccessResponse(res?.statusCode, res?.success)) {
           setData(res.data);
+        } else {
+          setError("Không tìm thấy chương này.");
         }
       } catch (err) {
         console.error("Error when fetching chapter details: ", err);

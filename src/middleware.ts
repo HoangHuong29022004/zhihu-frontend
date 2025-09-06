@@ -39,17 +39,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", baseUrl));
   }
 
-  // Xử lý chapter slugs có dấu chấm
+  // Xử lý chapter slugs có dấu chấm - thêm header để component biết slug gốc
   const comicChapterMatch = currentPath.match(/^\/comic\/([^\/]+)\/([^\/]+)$/);
   if (comicChapterMatch) {
     const [, comicSlug, chapterSlug] = comicChapterMatch;
     
-    // Nếu chapter slug có dấu chấm, redirect đến URL với dấu gạch ngang
+    // Nếu chapter slug có dấu chấm, thêm header để component biết slug gốc
     if (chapterSlug.includes('.')) {
-      const newChapterSlug = chapterSlug.replace(/\./g, '-');
-      const newUrl = new URL(`/comic/${comicSlug}/${newChapterSlug}`, baseUrl);
-      newUrl.search = request.nextUrl.search; // Giữ query parameters
-      return NextResponse.redirect(newUrl);
+      const response = NextResponse.next();
+      response.headers.set('X-Original-Chapter-Slug', chapterSlug);
+      response.headers.set('X-Fixed-Chapter-Slug', chapterSlug.replace(/\./g, '-'));
+      return response;
     }
   }
 

@@ -32,21 +32,7 @@ export const AutoOpenBrowser = () => {
   }, []);
 
   const attemptRedirect = () => {
-    let currentUrl = window.location.href;
-    
-    // Fix chapter slugs with dots for better routing
-    if (currentUrl.includes('/comic/') && currentUrl.includes('.')) {
-      const urlParts = currentUrl.split('/');
-      const comicIndex = urlParts.findIndex(part => part === 'comic');
-      if (comicIndex !== -1 && comicIndex + 2 < urlParts.length) {
-        const chapterPart = urlParts[comicIndex + 2];
-        if (chapterPart.includes('.')) {
-          const fixedChapterPart = chapterPart.replace(/\./g, '-');
-          urlParts[comicIndex + 2] = fixedChapterPart;
-          currentUrl = urlParts.join('/');
-        }
-      }
-    }
+    const currentUrl = window.location.href;
     
     // Method 1: Try to force external browser with multiple schemes
     try {
