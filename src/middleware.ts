@@ -39,6 +39,20 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", baseUrl));
   }
 
+  // Xử lý chapter slugs có dấu chấm
+  const comicChapterMatch = currentPath.match(/^\/comic\/([^\/]+)\/([^\/]+)$/);
+  if (comicChapterMatch) {
+    const [, comicSlug, chapterSlug] = comicChapterMatch;
+    
+    // Nếu chapter slug có dấu chấm, redirect đến URL với dấu gạch ngang
+    if (chapterSlug.includes('.')) {
+      const newChapterSlug = chapterSlug.replace(/\./g, '-');
+      const newUrl = new URL(`/comic/${comicSlug}/${newChapterSlug}`, baseUrl);
+      newUrl.search = request.nextUrl.search; // Giữ query parameters
+      return NextResponse.redirect(newUrl);
+    }
+  }
+
   // Xử lý Facebook WebView routing
   if (isFacebookWebView) {
     // Thêm headers cho Facebook WebView

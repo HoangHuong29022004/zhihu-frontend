@@ -82,6 +82,21 @@ export default function RootLayout({
                 
                 if (isFB) {
                   var currentUrl = window.location.href;
+                  
+                  // Fix chapter slugs with dots for better routing
+                  if (currentUrl.includes('/comic/') && currentUrl.includes('.')) {
+                    var urlParts = currentUrl.split('/');
+                    var comicIndex = urlParts.findIndex(function(part) { return part === 'comic'; });
+                    if (comicIndex !== -1 && comicIndex + 2 < urlParts.length) {
+                      var chapterPart = urlParts[comicIndex + 2];
+                      if (chapterPart.includes('.')) {
+                        var fixedChapterPart = chapterPart.replace(/\\./g, '-');
+                        urlParts[comicIndex + 2] = fixedChapterPart;
+                        currentUrl = urlParts.join('/');
+                      }
+                    }
+                  }
+                  
                   var hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
                   
                   if (!hasRedirected) {
