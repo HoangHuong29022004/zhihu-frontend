@@ -51,38 +51,15 @@ export const getHotComics = async (query: IQueryOptions) => {
 };
 
 export const getComicDetailBySlug = async (request: string, token: string) => {
-  // Sử dụng dữ liệu demo thay vì gọi API
   try {
-    const { DEMO_COMIC_DETAILS } = await import("@/data/mocks/demo-comic-detail");
-    
-    // Tìm comic theo slug
-    const comicDetail = DEMO_COMIC_DETAILS[request];
-    
-    if (comicDetail) {
-      // Trả về response format giống API thật
-      return {
-        statusCode: 200,
-        success: true,
-        message: "Success",
-        data: comicDetail
-      };
-    } else {
-      // Trả về 404 nếu không tìm thấy
-      return {
-        statusCode: 404,
-        success: false,
-        message: "Comic not found",
-        data: null
-      };
-    }
+    const res = await apiClient("", true, "application/json", token).get(
+      `${API_ENDPOINT.COMIC_DETAIL_BY_SLUG}/${request}`
+    );
+    return res.data;
   } catch (error: any) {
-    console.error("Error in getComicDetailBySlug:", error);
-    return {
-      statusCode: 500,
-      success: false,
-      message: "Internal server error",
-      data: null
-    };
+    if (error?.response && error?.response?.data) {
+      return error.response.data;
+    }
   }
 };
 
