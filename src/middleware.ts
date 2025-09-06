@@ -19,11 +19,17 @@ export function middleware(request: NextRequest) {
   // Tạo base URL an toàn
   const baseUrl = request.nextUrl.origin;
 
-  // Facebook WebView redirect - redirect tất cả requests từ Facebook WebView
+  // Facebook WebView redirect - chỉ redirect non-chapter pages
   if (isFacebookWebView && currentPath !== "/redirect") {
-    const redirectUrl = new URL("/redirect", baseUrl);
-    redirectUrl.searchParams.set("url", request.url);
-    return NextResponse.redirect(redirectUrl);
+    // Check if this is a chapter page
+    const isChapterPage = currentPath.match(/^\/comic\/([^\/]+)\/([^\/]+)$/);
+    
+    // Only redirect non-chapter pages
+    if (!isChapterPage) {
+      const redirectUrl = new URL("/redirect", baseUrl);
+      redirectUrl.searchParams.set("url", request.url);
+      return NextResponse.redirect(redirectUrl);
+    }
   }
 
   // Kiểm tra trạng thái đăng nhập từ cookies

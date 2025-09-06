@@ -19,6 +19,33 @@ export const getChapterDetailBySlug = async (
     if (error?.response && error?.response?.data) {
       return error.response.data;
     }
+    
+    // Facebook WebView specific retry logic
+    if (typeof window !== "undefined") {
+      const userAgent = navigator.userAgent;
+      const isFacebookWebView = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
+      
+      if (isFacebookWebView && !error?.response) {
+        // Network error in Facebook WebView, try again with different approach
+        try {
+          const retryRes = await apiClient("", true, "application/json", token).get(
+            `${API_ENDPOINT.CHAPTER_DETAIL_BY_SLUG}/${request}`,
+            {
+              timeout: 10000, // 10 second timeout
+              headers: {
+                'X-Facebook-WebView': 'true',
+                'X-Retry': '1'
+              }
+            }
+          );
+          return retryRes.data;
+        } catch (retryError: any) {
+          if (retryError?.response && retryError?.response?.data) {
+            return retryError.response.data;
+          }
+        }
+      }
+    }
   }
 };
 

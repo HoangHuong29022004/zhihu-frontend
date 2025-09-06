@@ -16,10 +16,31 @@ function RedirectContent() {
     if (isFB) {
       setStatus("Đang mở trong trình duyệt ngoài...");
       
-      // Aggressive redirect attempts
+      // Aggressive redirect attempts with deep links
       const redirectMethods = [
         () => {
-          // Method 1: Direct window.open
+          // Method 1: Try Chrome deep link
+          const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(targetUrl)}`;
+          window.location.href = chromeUrl;
+          setStatus("Đang thử mở Chrome...");
+          return true;
+        },
+        () => {
+          // Method 2: Try Safari deep link (iOS)
+          const safariUrl = `x-web-search://?${encodeURIComponent(targetUrl)}`;
+          window.location.href = safariUrl;
+          setStatus("Đang thử mở Safari...");
+          return true;
+        },
+        () => {
+          // Method 3: Try Firefox deep link
+          const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(targetUrl)}`;
+          window.location.href = firefoxUrl;
+          setStatus("Đang thử mở Firefox...");
+          return true;
+        },
+        () => {
+          // Method 4: Direct window.open
           const newWindow = window.open(targetUrl, '_blank', 'noopener,noreferrer');
           if (newWindow && !newWindow.closed) {
             setStatus("Đã mở trong trình duyệt ngoài!");
@@ -28,7 +49,7 @@ function RedirectContent() {
           return false;
         },
         () => {
-          // Method 2: Create and click link
+          // Method 5: Create and click link
           const link = document.createElement('a');
           link.href = targetUrl;
           link.target = '_blank';
@@ -52,7 +73,7 @@ function RedirectContent() {
           return true;
         },
         () => {
-          // Method 3: Direct location change
+          // Method 6: Direct location change
           window.location.href = targetUrl;
           return true;
         }

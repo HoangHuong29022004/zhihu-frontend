@@ -132,6 +132,10 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
         setLoading(true);
         const token = getAccessToken();
         
+        // Detect Facebook WebView for special handling
+        const userAgent = navigator.userAgent;
+        const isFacebookWebView = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
+        
         // Thử với slug gốc trước
         let res: IApiResponse<IChapterDetail> = await getChapterDetailBySlug(
           chapter,
@@ -166,6 +170,12 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
             setError("Chương này không tồn tại hoặc đã bị xóa.");
           } else {
             setError("Không thể tải chương. Vui lòng kiểm tra kết nối mạng.");
+          }
+          
+          // Facebook WebView specific error handling
+          if (isFacebookWebView) {
+            console.log("Facebook WebView detected - API call failed");
+            // Could add specific Facebook WebView error handling here
           }
         }
       } catch (err) {

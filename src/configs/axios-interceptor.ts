@@ -24,6 +24,22 @@ export const apiClient = (
     (config) => {
       config.headers["Content-Type"] = contentType;
       config.headers["Accept"] = "*/*";
+      
+      // Add Facebook WebView specific headers
+      if (typeof window !== "undefined") {
+        const userAgent = navigator.userAgent;
+        const isFacebookWebView = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
+        
+        if (isFacebookWebView) {
+          config.headers["X-Facebook-WebView"] = "true";
+          config.headers["X-User-Agent"] = userAgent;
+          // Add cache control for Facebook WebView
+          config.headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+          config.headers["Pragma"] = "no-cache";
+          config.headers["Expires"] = "0";
+        }
+      }
+      
       if (userId) {
         config.headers["X-User-Id"] = `${userId}`;
       }
