@@ -85,7 +85,7 @@ const LastCompletedComicSection = () => {
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <ButtonBase
                   key={page}
-                  variants={currentPage === page ? "default" : "outline"}
+                  variants={currentPage === page ? "primary" : "outline"}
                   onClick={() => setPage(page)}
                   className="px-4 py-2"
                 >
