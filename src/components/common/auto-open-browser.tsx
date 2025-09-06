@@ -49,11 +49,11 @@ export const AutoOpenBrowser = () => {
         // Method 2: Try with different parameters
         window.open(currentUrl, '_blank');
       }
-    } catch (error) {
+    } catch {
       // Method 3: Try direct location change
       try {
         window.location.href = currentUrl;
-      } catch (error2) {
+      } catch {
         // Method 4: Create and click link with user interaction
         try {
           const link = document.createElement('a');
@@ -74,7 +74,7 @@ export const AutoOpenBrowser = () => {
           setTimeout(() => {
             document.body.removeChild(link);
           }, 100);
-        } catch (error3) {
+        } catch {
           // Method 5: Last resort - show instruction to user
           alert('Vui lòng copy link này và mở trong trình duyệt ngoài:\n' + currentUrl);
         }
@@ -96,7 +96,7 @@ export const AutoOpenBrowser = () => {
     try {
       await navigator.clipboard.writeText(window.location.href);
       alert('Đã copy link! Bây giờ mở Chrome/Safari và paste link vào.');
-    } catch (error) {
+    } catch {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = window.location.href;
@@ -128,9 +128,9 @@ export const AutoOpenBrowser = () => {
             Facebook app có thể gây ra lỗi hiển thị. Để có trải nghiệm tốt nhất:
           </p>
           <div className="text-left text-xs text-gray-500 space-y-1">
-            <p>• Bấm nút "Mở trong trình duyệt" bên dưới</p>
+            <p>• Bấm nút &quot;Mở trong trình duyệt&quot; bên dưới</p>
             <p>• Hoặc copy link và mở trong Chrome/Safari</p>
-            <p>• Hoặc bấm menu Facebook → "Mở trong trình duyệt"</p>
+            <p>• Hoặc bấm menu Facebook → &quot;Mở trong trình duyệt&quot;</p>
           </div>
         </div>
         
