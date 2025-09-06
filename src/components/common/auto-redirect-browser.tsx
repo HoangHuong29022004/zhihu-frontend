@@ -62,10 +62,10 @@ export const AutoRedirectBrowser = () => {
     }
   };
 
-  const handleDismiss = () => {
-    setShowRedirectModal(false);
-    localStorage.setItem('fb-auto-redirect-dismissed', 'true');
-  };
+  // const handleDismiss = () => {
+  //   setShowRedirectModal(false);
+  //   localStorage.setItem('fb-auto-redirect-dismissed', 'true');
+  // };
 
   const handleStayInApp = () => {
     setShowRedirectModal(false);
