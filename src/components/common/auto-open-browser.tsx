@@ -39,7 +39,7 @@ export const AutoOpenBrowser = () => {
       // Try Chrome first
       const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
       window.location.href = chromeUrl;
-    } catch (error) {
+    } catch {
       // Silent fail
     }
     
