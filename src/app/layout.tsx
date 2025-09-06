@@ -8,11 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import QueryProvider from "@/providers/query-provider";
 import { AdSenseScript } from "@/components/common/adsense";
 import { ADSENSE_CONFIG, shouldShowAds } from "@/configs/adsense";
-import { FacebookWebViewDetector } from "@/components/common/facebook-webview-detector";
-import { FacebookWebViewNotice } from "@/components/common/facebook-webview-notice";
-import { ForceRedirectBrowser } from "@/components/common/force-redirect-browser";
-import { ResetRedirectSettings } from "@/components/common/reset-redirect-settings";
-import { SimpleDebug } from "@/components/common/simple-debug";
+import { AutoOpenBrowser } from "@/components/common/auto-open-browser";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,11 +73,7 @@ export default function RootLayout({
         <meta name="twitter:site" content="@thanhnhacchau" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
-        <ForceRedirectBrowser />
-        <FacebookWebViewNotice />
-        <FacebookWebViewDetector />
-        <ResetRedirectSettings />
-        <SimpleDebug />
+        <AutoOpenBrowser />
         <QueryProvider>
           <NextTopLoader
             speed={800}
