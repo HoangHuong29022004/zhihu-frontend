@@ -48,7 +48,7 @@ export const AutoOpenBrowser = () => {
       try {
         const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
         window.location.href = firefoxUrl;
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 200);
@@ -58,7 +58,7 @@ export const AutoOpenBrowser = () => {
       try {
         const operaUrl = `opera://open-url?url=${encodeURIComponent(currentUrl)}`;
         window.location.href = operaUrl;
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 400);
@@ -68,7 +68,7 @@ export const AutoOpenBrowser = () => {
       try {
         const samsungUrl = `samsungbrowser://navigate?url=${encodeURIComponent(currentUrl)}`;
         window.location.href = samsungUrl;
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 600);
@@ -78,7 +78,7 @@ export const AutoOpenBrowser = () => {
       try {
         const edgeUrl = `microsoft-edge://${currentUrl}`;
         window.location.href = edgeUrl;
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 800);
@@ -93,7 +93,7 @@ export const AutoOpenBrowser = () => {
         setTimeout(() => {
           document.body.removeChild(iframe);
         }, 1000);
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 1000);
@@ -109,7 +109,7 @@ export const AutoOpenBrowser = () => {
         document.body.appendChild(form);
         form.submit();
         document.body.removeChild(form);
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 1200);
@@ -132,7 +132,7 @@ export const AutoOpenBrowser = () => {
         });
         
         document.body.removeChild(link);
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 1400);
@@ -142,7 +142,7 @@ export const AutoOpenBrowser = () => {
       try {
         // Try to change location to trigger external app
         window.location.href = currentUrl;
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 1600);
@@ -151,7 +151,7 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         window.open(currentUrl, '_blank', 'noopener,noreferrer');
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 1800);
@@ -160,7 +160,7 @@ export const AutoOpenBrowser = () => {
     setTimeout(() => {
       try {
         window.location.replace(currentUrl);
-      } catch (error) {
+      } catch {
         // Silent fail
       }
     }, 2000);
