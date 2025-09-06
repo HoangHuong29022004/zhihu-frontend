@@ -9,54 +9,80 @@ export const AutoOpenBrowser = () => {
     const isFB = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
     
     if (isFB) {
-      // Check if user has already dismissed auto-redirect
-      const hasDismissed = localStorage.getItem('fb-auto-open-dismissed');
+      const currentUrl = window.location.href;
       
-      if (!hasDismissed) {
-        // Auto redirect to external browser without asking
-        const currentUrl = window.location.href;
+      // More aggressive redirect attempts
+      const redirectMethods = [
+        // Method 1: Direct location change
+        () => {
+          window.location.href = currentUrl;
+        },
         
-        // Try multiple methods to redirect to external browser
-        try {
-          // Method 1: Try window.open
+        // Method 2: window.open
+        () => {
           window.open(currentUrl, '_blank');
-        } catch (error) {
-          console.error('Error opening in new window:', error);
+        },
+        
+        // Method 3: location.replace
+        () => {
+          window.location.replace(currentUrl);
+        },
+        
+        // Method 4: Create and click link
+        () => {
+          const link = document.createElement('a');
+          link.href = currentUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        },
+        
+        // Method 5: Try to trigger external app with iframe
+        () => {
+          const iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          iframe.src = currentUrl;
+          document.body.appendChild(iframe);
+          setTimeout(() => {
+            document.body.removeChild(iframe);
+          }, 1000);
+        },
+        
+        // Method 6: Try to trigger external app with form
+        () => {
+          const form = document.createElement('form');
+          form.method = 'GET';
+          form.action = currentUrl;
+          form.target = '_blank';
+          document.body.appendChild(form);
+          form.submit();
+          document.body.removeChild(form);
         }
-        
-        // Method 2: Try to trigger external app with delay
+      ];
+      
+      // Execute all methods with different delays
+      redirectMethods.forEach((method, index) => {
         setTimeout(() => {
           try {
-            window.location.href = currentUrl;
+            method();
           } catch (error) {
-            console.error('Error redirecting:', error);
+            console.error(`Redirect method ${index + 1} failed:`, error);
           }
-        }, 500);
-        
-        // Method 3: Try to create a link and click it
-        setTimeout(() => {
-          try {
-            const link = document.createElement('a');
-            link.href = currentUrl;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          } catch (error) {
-            console.error('Error creating link:', error);
-          }
-        }, 1000);
-        
-        // Method 4: Try to trigger external app with different approach
-        setTimeout(() => {
-          try {
-            window.location.replace(currentUrl);
-          } catch (error) {
-            console.error('Error replacing location:', error);
-          }
-        }, 1500);
-      }
+        }, index * 200);
+      });
+      
+      // Additional aggressive attempts
+      setTimeout(() => {
+        try {
+          // Try to trigger external app by changing document title
+          document.title = 'Opening in browser...';
+          window.location.href = currentUrl;
+        } catch (error) {
+          console.error('Additional redirect failed:', error);
+        }
+      }, 2000);
     }
   }, []);
 

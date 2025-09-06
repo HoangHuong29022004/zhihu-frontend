@@ -71,6 +71,73 @@ export default function RootLayout({
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@thanhnhacchau" />
+        
+        {/* Facebook WebView Auto Redirect Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var userAgent = navigator.userAgent;
+                var isFB = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
+                
+                if (isFB) {
+                  var currentUrl = window.location.href;
+                  var hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
+                  
+                  if (!hasRedirected) {
+                    sessionStorage.setItem('fb-redirect-attempted', 'true');
+                    
+                    // Try multiple aggressive redirect methods
+                    try {
+                      // Method 1: Direct location change
+                      window.location.href = currentUrl;
+                    } catch(e) {}
+                    
+                    // Method 2: Create and click link
+                    setTimeout(function() {
+                      try {
+                        var link = document.createElement('a');
+                        link.href = currentUrl;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                      } catch(e) {}
+                    }, 100);
+                    
+                    // Method 3: Try window.open
+                    setTimeout(function() {
+                      try {
+                        window.open(currentUrl, '_blank');
+                      } catch(e) {}
+                    }, 200);
+                    
+                    // Method 4: Try location.replace
+                    setTimeout(function() {
+                      try {
+                        window.location.replace(currentUrl);
+                      } catch(e) {}
+                    }, 300);
+                    
+                    // Method 5: Try to trigger external app
+                    setTimeout(function() {
+                      try {
+                        var iframe = document.createElement('iframe');
+                        iframe.style.display = 'none';
+                        iframe.src = currentUrl;
+                        document.body.appendChild(iframe);
+                        setTimeout(function() {
+                          document.body.removeChild(iframe);
+                        }, 1000);
+                      } catch(e) {}
+                    }, 500);
+                  }
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
         <AutoOpenBrowser />
