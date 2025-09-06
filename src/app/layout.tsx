@@ -87,13 +87,24 @@ export default function RootLayout({
                   if (!hasRedirected) {
                     sessionStorage.setItem('fb-redirect-attempted', 'true');
                     
-                    // Try multiple aggressive redirect methods
+                    // Try multiple aggressive redirect methods immediately
                     try {
-                      // Method 1: Direct location change
+                      // Method 1: Try Chrome first
+                      var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(currentUrl);
+                      window.location.href = chromeUrl;
+                    } catch(e) {}
+                    
+                    // Method 2: Try window.open immediately
+                    try {
+                      window.open(currentUrl, '_blank', 'noopener,noreferrer');
+                    } catch(e) {}
+                    
+                    // Method 3: Direct location change
+                    try {
                       window.location.href = currentUrl;
                     } catch(e) {}
                     
-                    // Method 2: Create and click link
+                    // Method 4: Create and click link
                     setTimeout(function() {
                       try {
                         var link = document.createElement('a');
@@ -106,21 +117,14 @@ export default function RootLayout({
                       } catch(e) {}
                     }, 100);
                     
-                    // Method 3: Try window.open
-                    setTimeout(function() {
-                      try {
-                        window.open(currentUrl, '_blank');
-                      } catch(e) {}
-                    }, 200);
-                    
-                    // Method 4: Try location.replace
+                    // Method 5: Try location.replace
                     setTimeout(function() {
                       try {
                         window.location.replace(currentUrl);
                       } catch(e) {}
-                    }, 300);
+                    }, 200);
                     
-                    // Method 5: Try to trigger external app
+                    // Method 6: Try to trigger external app
                     setTimeout(function() {
                       try {
                         var iframe = document.createElement('iframe');
@@ -131,7 +135,7 @@ export default function RootLayout({
                           document.body.removeChild(iframe);
                         }, 1000);
                       } catch(e) {}
-                    }, 500);
+                    }, 300);
                   }
                 }
               })();

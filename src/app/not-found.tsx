@@ -18,7 +18,37 @@ export default function NotFound() {
   }, []);
 
   const handleOpenInBrowser = () => {
-    window.open(currentUrl, '_blank');
+    // Try multiple redirect methods
+    try {
+      // Method 1: Direct window.open
+      window.open(currentUrl, '_blank');
+    } catch {
+      // Method 2: Try Chrome
+      try {
+        const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
+        window.location.href = chromeUrl;
+      } catch {
+        // Method 3: Try Firefox
+        try {
+          const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
+          window.location.href = firefoxUrl;
+        } catch {
+          // Method 4: Try Safari
+          try {
+            window.location.href = currentUrl;
+          } catch {
+            // Method 5: Create link and click
+            const link = document.createElement('a');
+            link.href = currentUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        }
+      }
+    }
   };
 
   const handleRefresh = () => {

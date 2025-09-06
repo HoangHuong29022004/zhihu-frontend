@@ -20,13 +20,13 @@ export const AutoOpenBrowser = () => {
       const hasRedirected = sessionStorage.getItem('fb-redirect-attempted');
       
       if (!hasDismissed && !hasRedirected) {
-        // Show notice immediately
-        setShowRedirectNotice(true);
+        // Auto attempt redirect immediately
+        attemptRedirect();
         
-        // Auto attempt redirect after 2 seconds
+        // Show notice after 1 second
         setTimeout(() => {
-          attemptRedirect();
-        }, 2000);
+          setShowRedirectNotice(true);
+        }, 1000);
       }
     }
   }, []);
@@ -39,6 +39,13 @@ export const AutoOpenBrowser = () => {
       // Try Chrome first
       const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
       window.location.href = chromeUrl;
+    } catch {
+      // Silent fail
+    }
+    
+    // Method 1.5: Try immediate window.open
+    try {
+      window.open(currentUrl, '_blank', 'noopener,noreferrer');
     } catch {
       // Silent fail
     }
