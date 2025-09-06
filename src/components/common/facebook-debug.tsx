@@ -51,12 +51,12 @@ export const FacebookDebug = () => {
     <div className="fixed bottom-4 right-4 bg-black bg-opacity-80 text-white p-4 rounded-lg text-xs max-w-sm z-50">
       <h4 className="font-bold mb-2">Facebook WebView Debug</h4>
       <div className="space-y-1">
-        <div><strong>URL:</strong> {debugInfo.currentUrl}</div>
-        <div><strong>Viewport:</strong> {debugInfo.viewport.width}x{debugInfo.viewport.height}</div>
-        <div><strong>Platform:</strong> {debugInfo.navigator.platform}</div>
-        <div><strong>Language:</strong> {debugInfo.navigator.language}</div>
-        <div><strong>Online:</strong> {debugInfo.navigator.onLine ? 'Yes' : 'No'}</div>
-        <div><strong>Ready State:</strong> {debugInfo.document.readyState}</div>
+        <div><strong>URL:</strong> {String(debugInfo.currentUrl)}</div>
+        <div><strong>Viewport:</strong> {String(debugInfo.viewport?.width)}x{String(debugInfo.viewport?.height)}</div>
+        <div><strong>Platform:</strong> {String(debugInfo.navigator?.platform)}</div>
+        <div><strong>Language:</strong> {String(debugInfo.navigator?.language)}</div>
+        <div><strong>Online:</strong> {debugInfo.navigator?.onLine ? 'Yes' : 'No'}</div>
+        <div><strong>Ready State:</strong> {String(debugInfo.document?.readyState)}</div>
       </div>
     </div>
   );
