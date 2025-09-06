@@ -139,22 +139,34 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
           token ?? ""
         );
         
+        // Debug info for mobile
+        let debugInfo = `Chapter slug: ${chapter}\nAPI status: ${res?.statusCode || 'no response'}`;
+        
         // Nếu fail và chapter có dấu gạch ngang, thử với slug có dấu chấm
         if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('-')) {
           const originalSlug = chapter.replace(/-/g, '.');
+          debugInfo += `\nTrying with dots: ${originalSlug}`;
           res = await getChapterDetailBySlug(
             originalSlug,
             token ?? ""
           );
+          debugInfo += `\nAPI status (with dots): ${res?.statusCode || 'no response'}`;
         }
         
         // Nếu vẫn fail và chapter có dấu chấm, thử với slug không có dấu chấm
         if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('.')) {
           const fixedSlug = chapter.replace(/\./g, '-');
+          debugInfo += `\nTrying without dots: ${fixedSlug}`;
           res = await getChapterDetailBySlug(
             fixedSlug,
             token ?? ""
           );
+          debugInfo += `\nAPI status (without dots): ${res?.statusCode || 'no response'}`;
+        }
+        
+        // Show debug info if all attempts fail
+        if (!res || !isSuccessResponse(res?.statusCode, res?.success)) {
+          alert(`Debug Info:\n${debugInfo}\n\nFinal result: API call failed`);
         }
         
         if (res && isSuccessResponse(res?.statusCode, res?.success)) {
