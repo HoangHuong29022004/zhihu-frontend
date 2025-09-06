@@ -42,7 +42,7 @@ export function middleware(request: NextRequest) {
   // Xử lý chapter slugs có dấu chấm - thêm header để component biết slug gốc
   const comicChapterMatch = currentPath.match(/^\/comic\/([^\/]+)\/([^\/]+)$/);
   if (comicChapterMatch) {
-    const [, comicSlug, chapterSlug] = comicChapterMatch;
+    const [, , chapterSlug] = comicChapterMatch;
     
     // Nếu chapter slug có dấu chấm, thêm header để component biết slug gốc
     if (chapterSlug.includes('.')) {
