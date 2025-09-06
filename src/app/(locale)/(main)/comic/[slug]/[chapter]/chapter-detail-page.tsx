@@ -139,7 +139,7 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
           token ?? ""
         );
         
-        // Nếu fail và chapter có dấu chấm, thử với slug có dấu chấm
+        // Nếu fail và chapter có dấu gạch ngang, thử với slug có dấu chấm
         if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('-')) {
           const originalSlug = chapter.replace(/-/g, '.');
           res = await getChapterDetailBySlug(
@@ -148,8 +148,8 @@ const ChapterDetailPage = ({ chapter }: IProps) => {
           );
         }
         
-        // Nếu vẫn fail và chapter không có dấu chấm, thử với slug không có dấu chấm
-        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && !chapter.includes('.')) {
+        // Nếu vẫn fail và chapter có dấu chấm, thử với slug không có dấu chấm
+        if ((!res || !isSuccessResponse(res?.statusCode, res?.success)) && chapter.includes('.')) {
           const fixedSlug = chapter.replace(/\./g, '-');
           res = await getChapterDetailBySlug(
             fixedSlug,

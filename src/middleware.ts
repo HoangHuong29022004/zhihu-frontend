@@ -39,16 +39,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", baseUrl));
   }
 
-  // Xử lý chapter slugs có dấu chấm - thêm header để component biết slug gốc
+  // Xử lý chapter slugs - không redirect, giữ nguyên URL gốc
   const comicChapterMatch = currentPath.match(/^\/comic\/([^\/]+)\/([^\/]+)$/);
   if (comicChapterMatch) {
     const [, , chapterSlug] = comicChapterMatch;
     
-    // Nếu chapter slug có dấu chấm, thêm header để component biết slug gốc
+    // Nếu chapter slug có dấu chấm, giữ nguyên URL gốc
     if (chapterSlug.includes('.')) {
       const response = NextResponse.next();
-      response.headers.set('X-Original-Chapter-Slug', chapterSlug);
-      response.headers.set('X-Fixed-Chapter-Slug', chapterSlug.replace(/\./g, '-'));
+      response.headers.set('X-Chapter-Has-Dots', 'true');
       return response;
     }
   }
