@@ -28,22 +28,118 @@ export const AutoOpenBrowser = () => {
   const attemptRedirect = () => {
     const currentUrl = window.location.href;
     
-    // Single method: Try to open in external browser using intent URL (Android)
+    // Method 1: Try to force external browser with multiple schemes
     try {
-      const intentUrl = `intent://${currentUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
-      window.location.href = intentUrl;
+      // Try Chrome first
+      const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
+      window.location.href = chromeUrl;
     } catch (error) {
-      console.log('Intent method failed:', error);
+      console.log('Chrome method failed:', error);
     }
     
-    // Fallback: Try window.open
+    // Method 2: Try Firefox
     setTimeout(() => {
       try {
-        window.open(currentUrl, '_blank', 'noopener,noreferrer');
+        const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
+        window.location.href = firefoxUrl;
       } catch (error) {
-        console.log('Window.open method failed:', error);
+        console.log('Firefox method failed:', error);
       }
-    }, 500);
+    }, 200);
+    
+    // Method 3: Try Opera
+    setTimeout(() => {
+      try {
+        const operaUrl = `opera://open-url?url=${encodeURIComponent(currentUrl)}`;
+        window.location.href = operaUrl;
+      } catch (error) {
+        console.log('Opera method failed:', error);
+      }
+    }, 400);
+    
+    // Method 4: Try Samsung Browser
+    setTimeout(() => {
+      try {
+        const samsungUrl = `samsungbrowser://navigate?url=${encodeURIComponent(currentUrl)}`;
+        window.location.href = samsungUrl;
+      } catch (error) {
+        console.log('Samsung method failed:', error);
+      }
+    }, 600);
+    
+    // Method 5: Try Edge
+    setTimeout(() => {
+      try {
+        const edgeUrl = `microsoft-edge://${currentUrl}`;
+        window.location.href = edgeUrl;
+      } catch (error) {
+        console.log('Edge method failed:', error);
+      }
+    }, 800);
+    
+    // Method 6: Try to trigger external app with iframe
+    setTimeout(() => {
+      try {
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = currentUrl;
+        document.body.appendChild(iframe);
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+        }, 1000);
+      } catch (error) {
+        console.log('Iframe method failed:', error);
+      }
+    }, 1000);
+    
+    // Method 7: Try to trigger external app with form
+    setTimeout(() => {
+      try {
+        const form = document.createElement('form');
+        form.method = 'GET';
+        form.action = currentUrl;
+        form.target = '_blank';
+        form.style.display = 'none';
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+      } catch (error) {
+        console.log('Form method failed:', error);
+      }
+    }, 1200);
+    
+    // Method 8: Try to trigger external app with link click
+    setTimeout(() => {
+      try {
+        const link = document.createElement('a');
+        link.href = currentUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        
+        // Simulate user click with different events
+        const events = ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend'];
+        events.forEach(eventType => {
+          const event = new Event(eventType, { bubbles: true, cancelable: true });
+          link.dispatchEvent(event);
+        });
+        
+        document.body.removeChild(link);
+      } catch (error) {
+        console.log('Link click method failed:', error);
+      }
+    }, 1400);
+    
+    // Method 9: Try to trigger external app with location change
+    setTimeout(() => {
+      try {
+        // Try to change location to trigger external app
+        window.location.href = currentUrl;
+      } catch (error) {
+        console.log('Location change method failed:', error);
+      }
+    }, 1600);
   };
 
   const handleDismiss = () => {
