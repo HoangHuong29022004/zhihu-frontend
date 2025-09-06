@@ -55,127 +55,29 @@ export const AutoOpenBrowser = () => {
       // Silent fail
     }
     
-    // Method 2: Try Firefox
-    setTimeout(() => {
-      try {
-        const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
-        window.location.href = firefoxUrl;
-      } catch {
-        // Silent fail
-      }
-    }, 200);
-    
-    // Method 3: Try Opera
-    setTimeout(() => {
-      try {
-        const operaUrl = `opera://open-url?url=${encodeURIComponent(currentUrl)}`;
-        window.location.href = operaUrl;
-      } catch {
-        // Silent fail
-      }
-    }, 400);
-    
-    // Method 4: Try Samsung Browser
-    setTimeout(() => {
-      try {
-        const samsungUrl = `samsungbrowser://navigate?url=${encodeURIComponent(currentUrl)}`;
-        window.location.href = samsungUrl;
-      } catch {
-        // Silent fail
-      }
-    }, 600);
-    
-    // Method 5: Try Edge
-    setTimeout(() => {
-      try {
-        const edgeUrl = `microsoft-edge://${currentUrl}`;
-        window.location.href = edgeUrl;
-      } catch {
-        // Silent fail
-      }
-    }, 800);
-    
-    // Method 6: Try to trigger external app with iframe
-    setTimeout(() => {
-      try {
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = currentUrl;
-        document.body.appendChild(iframe);
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-        }, 1000);
-      } catch {
-        // Silent fail
-      }
-    }, 1000);
-    
-    // Method 7: Try to trigger external app with form
-    setTimeout(() => {
-      try {
-        const form = document.createElement('form');
-        form.method = 'GET';
-        form.action = currentUrl;
-        form.target = '_blank';
-        form.style.display = 'none';
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-      } catch {
-        // Silent fail
-      }
-    }, 1200);
-    
-    // Method 8: Try to trigger external app with link click
+    // Method 3: Create and click link
     setTimeout(() => {
       try {
         const link = document.createElement('a');
         link.href = currentUrl;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.style.display = 'none';
         document.body.appendChild(link);
-        
-        // Simulate user click with different events
-        const events = ['click', 'mousedown', 'mouseup', 'touchstart', 'touchend'];
-        events.forEach(eventType => {
-          const event = new Event(eventType, { bubbles: true, cancelable: true });
-          link.dispatchEvent(event);
-        });
-        
+        link.click();
         document.body.removeChild(link);
       } catch {
         // Silent fail
       }
-    }, 1400);
+    }, 200);
     
-    // Method 9: Try to trigger external app with location change
-    setTimeout(() => {
-      try {
-        // Try to change location to trigger external app
-        window.location.href = currentUrl;
-      } catch {
-        // Silent fail
-      }
-    }, 1600);
-    
-    // Method 10: Try to trigger external app with window.open
-    setTimeout(() => {
-      try {
-        window.open(currentUrl, '_blank', 'noopener,noreferrer');
-      } catch {
-        // Silent fail
-      }
-    }, 1800);
-    
-    // Method 11: Try to trigger external app with location.replace
+    // Method 4: location.replace as final fallback
     setTimeout(() => {
       try {
         window.location.replace(currentUrl);
       } catch {
         // Silent fail
       }
-    }, 2000);
+    }, 500);
   };
 
   const handleDismiss = () => {

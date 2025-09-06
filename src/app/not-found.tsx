@@ -37,19 +37,11 @@ export default function NotFound() {
           link.click();
           document.body.removeChild(link);
         } catch {
-          // Method 4: Try Chrome scheme (fallback)
+          // Method 4: Last resort - reload page
           try {
-            const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
-            window.location.href = chromeUrl;
+            window.location.reload();
           } catch {
-            // Method 5: Try Firefox scheme (fallback)
-            try {
-              const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
-              window.location.href = firefoxUrl;
-            } catch {
-              // Last resort: reload page
-              window.location.reload();
-            }
+            // Silent fail
           }
         }
       }

@@ -101,44 +101,23 @@ export default function RootLayout({
                       window.location.href = currentUrl;
                     } catch(e) {}
                     
-                    // Method 3: Try Chrome scheme (fallback)
+                    // Method 3: Create and click link (fallback)
                     try {
-                      var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(currentUrl);
-                      window.location.href = chromeUrl;
+                      var link = document.createElement('a');
+                      link.href = currentUrl;
+                      link.target = '_blank';
+                      link.rel = 'noopener noreferrer';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
                     } catch(e) {}
                     
-                    // Method 4: Create and click link
-                    setTimeout(function() {
-                      try {
-                        var link = document.createElement('a');
-                        link.href = currentUrl;
-                        link.target = '_blank';
-                        link.rel = 'noopener noreferrer';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                      } catch(e) {}
-                    }, 100);
-                    
-                    // Method 5: Try location.replace
+                    // Method 4: location.replace as final fallback
                     setTimeout(function() {
                       try {
                         window.location.replace(currentUrl);
                       } catch(e) {}
                     }, 200);
-                    
-                    // Method 6: Try to trigger external app
-                    setTimeout(function() {
-                      try {
-                        var iframe = document.createElement('iframe');
-                        iframe.style.display = 'none';
-                        iframe.src = currentUrl;
-                        document.body.appendChild(iframe);
-                        setTimeout(function() {
-                          document.body.removeChild(iframe);
-                        }, 1000);
-                      } catch(e) {}
-                    }, 300);
                   }
                 }
               })();
