@@ -9,6 +9,7 @@ import QueryProvider from "@/providers/query-provider";
 import { AdSenseScript } from "@/components/common/adsense";
 import { ADSENSE_CONFIG, shouldShowAds } from "@/configs/adsense";
 import { FacebookWebViewDetector } from "@/components/common/facebook-webview-detector";
+import { FacebookWebViewNotice } from "@/components/common/facebook-webview-notice";
 import { SimpleDebug } from "@/components/common/simple-debug";
 
 const geistSans = Geist({
@@ -74,6 +75,7 @@ export default function RootLayout({
         <meta name="twitter:site" content="@thanhnhacchau" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
+        <FacebookWebViewNotice />
         <FacebookWebViewDetector />
         <SimpleDebug />
         <QueryProvider>

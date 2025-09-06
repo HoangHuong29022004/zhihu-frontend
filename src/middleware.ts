@@ -12,6 +12,10 @@ export function middleware(request: NextRequest) {
   // Lấy đường dẫn hiện tại
   const currentPath = request.nextUrl.pathname;
 
+  // Detect Facebook WebView
+  const userAgent = request.headers.get("user-agent") || "";
+  const isFacebookWebView = /FBAN|FBAV|FB_IAB|FB4A/i.test(userAgent);
+
   // Kiểm tra trạng thái đăng nhập từ cookies
   const accessToken = request.cookies.get("accessToken")?.value;
   const refreshToken = request.cookies.get("refreshToken")?.value;
@@ -35,18 +39,37 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", baseUrl));
   }
 
+  // Xử lý Facebook WebView routing
+  if (isFacebookWebView) {
+    // Thêm headers cho Facebook WebView
+    const response = NextResponse.next();
+    
+    // Thêm headers để cải thiện compatibility
+    response.headers.set("X-Frame-Options", "ALLOWALL");
+    response.headers.set("X-Content-Type-Options", "nosniff");
+    response.headers.set("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+    
+    // Thêm custom header để detect Facebook WebView
+    response.headers.set("X-Facebook-WebView", "true");
+    
+    return response;
+  }
+
   return NextResponse.next();
 }
 
-// Cấu hình middleware để áp dụng cho các route cụ thể
+// Cấu hình middleware để áp dụng cho tất cả routes
 export const config = {
   matcher: [
-    "/admin/:path*",
-    "/profile",
-    "/comic-history",
-    "/login",
-    "/register",
-    "/verify",
-    "/forgot-password",
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };
