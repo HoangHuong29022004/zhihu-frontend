@@ -1,43 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import { SectionWrapper } from "@/components/common/utils/common";
-import ComicItem from "./last-comic-item";
-import { ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
-import { usePagination } from "@/hooks/use-pagination";
+import { MoveRight } from "lucide-react";
 import ButtonBase from "@/components/common/utils/button/button-base";
-import { useEffect, useState } from "react";
-import { ILastCompletedComic } from "@/types/comic.type";
-import ComicSkeleton from "./comic-skeleton";
+import { useState } from "react";
 import { NoDataBase } from "@/components/common/utils/no-data";
-import { getListComics } from "@/services/comic-service";
-import { useComicStore } from "@/stores/comic-store";
+import ComicSkeleton from "./comic-skeleton";
+import Link from "next/link";
+import { ComicItem } from "./";
+import { usePagination } from "@/hooks/use-pagination";
+import { EXTENDED_DEMO_COMICS } from "@/data/mocks/demo-comics";
 
 const LastCompletedComicSection = () => {
-  const [listComic, setListComic] = useState<ILastCompletedComic[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const setLastCompletedComic = useComicStore(
-    (state) => state.setLastCompletedComic
-  );
-
-  const getListComic = async () => {
-    try {
-      setIsLoading(true);
-      const res = await getListComics({ pageNumber: 1, pageSize: 80 });
-      if (res && res?.data.length > 0) {
-        setListComic(res?.data || []);
-        setLastCompletedComic(res?.data);
-      }
-    } catch (error) {
-      console.log("Error when fetching", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getListComic();
-  }, []);
+  const [isLoading] = useState<boolean>(false);
+  
+  // Sử dụng dữ liệu demo tĩnh
+  const listComic = EXTENDED_DEMO_COMICS.slice(0, 16);
 
   const { paginatedData, currentPage, totalPages, setPage } = usePagination({
     data: listComic,
@@ -54,7 +32,7 @@ const LastCompletedComicSection = () => {
               Truyện mới cập nhật
             </h2>
             <p className="text-text-secondary mt-1">
-              Khám phá truyện mới nhất cùng chúng tôi!
+              Khám phá truyện mới nhất cùng chúng tôi! (Demo Data)
             </p>
           </div>
           <ButtonBase variants="outline" className="gap-2 max-sm:w-full">
@@ -92,41 +70,38 @@ const LastCompletedComicSection = () => {
         )}
 
         {/* Pagination controls */}
-        {!isLoading && paginatedData?.length > 0 && (
-          <div className="flex justify-center items-center gap-3 mt-5">
-            <button
-              aria-label="Previous button"
-              onClick={() => {
-                setPage(currentPage - 1);
-              }}
-              disabled={currentPage === 1}
-              className={`w-10 h-10 rounded-full border border-primary text-primary grid place-items-center transition-colors ${
-                currentPage === 1
-                  ? "opacity-30"
-                  : "hover:bg-primary hover:text-white"
-              }`}
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <p className="text-text-secondary text-base">
-              <b className="text-primary">{currentPage}</b>
-              <span className="mx-1">/</span>
-              <span>{totalPages} trang</span>
-            </p>
-            <button
-              aria-label="Next button"
-              onClick={() => {
-                setPage(currentPage + 1);
-              }}
-              disabled={currentPage === totalPages}
-              className={`w-10 h-10 rounded-full border border-primary text-primary grid place-items-center transition-colors ${
-                currentPage === totalPages
-                  ? "opacity-30"
-                  : "hover:bg-primary hover:text-white"
-              }`}
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-8">
+            <div className="flex gap-2">
+              <ButtonBase
+                variants="outline"
+                onClick={() => setPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2"
+              >
+                Trước
+              </ButtonBase>
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <ButtonBase
+                  key={page}
+                  variants={currentPage === page ? "default" : "outline"}
+                  onClick={() => setPage(page)}
+                  className="px-4 py-2"
+                >
+                  {page}
+                </ButtonBase>
+              ))}
+              
+              <ButtonBase
+                variants="outline"
+                onClick={() => setPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2"
+              >
+                Sau
+              </ButtonBase>
+            </div>
           </div>
         )}
       </SectionWrapper>
