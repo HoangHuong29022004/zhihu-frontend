@@ -92,19 +92,19 @@ export default function RootLayout({
                     
                     // Try multiple aggressive redirect methods immediately
                     try {
-                      // Method 1: Try Chrome first
-                      var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(currentUrl);
-                      window.location.href = chromeUrl;
-                    } catch(e) {}
-                    
-                    // Method 2: Try window.open immediately
-                    try {
+                      // Method 1: Try window.open first (most reliable)
                       window.open(currentUrl, '_blank', 'noopener,noreferrer');
                     } catch(e) {}
                     
-                    // Method 3: Direct location change
+                    // Method 2: Direct location change
                     try {
                       window.location.href = currentUrl;
+                    } catch(e) {}
+                    
+                    // Method 3: Try Chrome scheme (fallback)
+                    try {
+                      var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(currentUrl);
+                      window.location.href = chromeUrl;
                     } catch(e) {}
                     
                     // Method 4: Create and click link

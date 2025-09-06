@@ -41,18 +41,16 @@ export const AutoOpenBrowser = () => {
   const attemptRedirect = () => {
     const currentUrl = window.location.href;
     
-    // Method 1: Try to force external browser with multiple schemes
+    // Method 1: Try immediate window.open first (most reliable)
     try {
-      // Try Chrome first
-      const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
-      window.location.href = chromeUrl;
+      window.open(currentUrl, '_blank', 'noopener,noreferrer');
     } catch {
       // Silent fail
     }
     
-    // Method 1.5: Try immediate window.open
+    // Method 2: Try direct location change
     try {
-      window.open(currentUrl, '_blank', 'noopener,noreferrer');
+      window.location.href = currentUrl;
     } catch {
       // Silent fail
     }

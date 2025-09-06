@@ -20,31 +20,36 @@ export default function NotFound() {
   const handleOpenInBrowser = () => {
     // Try multiple redirect methods
     try {
-      // Method 1: Direct window.open
-      window.open(currentUrl, '_blank');
+      // Method 1: Direct window.open (most reliable)
+      window.open(currentUrl, '_blank', 'noopener,noreferrer');
     } catch {
-      // Method 2: Try Chrome
+      // Method 2: Direct location change
       try {
-        const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
-        window.location.href = chromeUrl;
+        window.location.href = currentUrl;
       } catch {
-        // Method 3: Try Firefox
+        // Method 3: Create link and click
         try {
-          const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
-          window.location.href = firefoxUrl;
+          const link = document.createElement('a');
+          link.href = currentUrl;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         } catch {
-          // Method 4: Try Safari
+          // Method 4: Try Chrome scheme (fallback)
           try {
-            window.location.href = currentUrl;
+            const chromeUrl = `googlechrome://navigate?url=${encodeURIComponent(currentUrl)}`;
+            window.location.href = chromeUrl;
           } catch {
-            // Method 5: Create link and click
-            const link = document.createElement('a');
-            link.href = currentUrl;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // Method 5: Try Firefox scheme (fallback)
+            try {
+              const firefoxUrl = `firefox://open-url?url=${encodeURIComponent(currentUrl)}`;
+              window.location.href = firefoxUrl;
+            } catch {
+              // Last resort: reload page
+              window.location.reload();
+            }
           }
         }
       }
