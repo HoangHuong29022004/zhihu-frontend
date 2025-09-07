@@ -27,3 +27,8 @@ export const DEPOSIT_OPTIONS = [
     isActive: true
   }
 ];
+
+export const getMarkFromAmount = (amount: number): number => {
+  // Logic tính mark từ amount
+  return Math.floor(amount / 1000);
+};
