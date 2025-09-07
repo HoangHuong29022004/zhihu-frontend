@@ -57,7 +57,6 @@ export const DEMO_COMIC_DETAIL: IComicDetail = {
       slug: "chuong-5-kham-pha",
       thumbnail: "/images/common/comic_chapter.png",
       unitPrice: 50,
-
     }
   ],
   audios: [
@@ -76,60 +75,7 @@ export const DEMO_COMIC_DETAIL: IComicDetail = {
   ]
 };
 
-// Tạo thêm dữ liệu cho các truyện khác
+// Chỉ giữ lại truyện Lục Linh Châu
 export const DEMO_COMIC_DETAILS: Record<string, IComicDetail> = {
-  "luc-linh-chau-13-tuoi-kiep-kho-tron": DEMO_COMIC_DETAIL,
-  "thien-tai-tieu-thu": {
-    ...DEMO_COMIC_DETAIL,
-    id: "2",
-    title: "Thiên Tài Tiểu Thư",
-    slug: "thien-tai-tieu-thu",
-    description: "Câu chuyện về một thiên tài nhỏ tuổi với khả năng đặc biệt...",
-    category: "Huyền huyễn",
-    categories: [{ id: "2", slug: "huyen-huyen", name: "Huyền huyễn" }],
-    totalViews: 98000,
-    totalOutstandings: 67,
-    totalChapters: 32,
-    authorName: "Tác giả B",
-    author: "Tác giả B",
-    chapters: [
-      {
-        id: "6",
-        title: "Chương 1: Thiên tài xuất hiện",
-        slug: "chuong-1-thien-tai-xuat-hien",
-        thumbnail: "/images/common/comic_chapter.png",
-        unitPrice: 0,
-      },
-      {
-        id: "7",
-        title: "Chương 2: Khả năng đặc biệt",
-        slug: "chuong-2-kha-nang-dac-biet",
-        thumbnail: "/images/common/comic_chapter.png",
-        unitPrice: 0,
-      }
-    ]
-  },
-  "ba-vuong-hoc-vien": {
-    ...DEMO_COMIC_DETAIL,
-    id: "3",
-    title: "Bá Vương Học Viện",
-    slug: "ba-vuong-hoc-vien",
-    description: "Học viện dành cho những người có khả năng đặc biệt...",
-    category: "Học đường",
-    categories: [{ id: "3", slug: "hoc-duong", name: "Học đường" }],
-    totalViews: 156000,
-    totalOutstandings: 112,
-    totalChapters: 28,
-    authorName: "Tác giả C",
-    author: "Tác giả C",
-    chapters: [
-      {
-        id: "8",
-        title: "Chương 1: Nhập học",
-        slug: "chuong-1-nhap-hoc",
-        thumbnail: "/images/common/comic_chapter.png",
-        unitPrice: 0,
-      }
-    ]
-  }
+  "luc-linh-chau-13-tuoi-kiep-kho-tron": DEMO_COMIC_DETAIL
 };
