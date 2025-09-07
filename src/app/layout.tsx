@@ -76,9 +76,24 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if (/FBAN|FBAV|FB_IAB|FB4A/i.test(navigator.userAgent)) {
-                window.location.href = window.location.href;
-              }
+              (function() {
+                var ua = navigator.userAgent;
+                if (/FBAN|FBAV|FB_IAB|FB4A/i.test(ua)) {
+                  var url = window.location.href;
+                  // Try multiple methods
+                  try {
+                    window.open(url, '_blank');
+                  } catch(e) {}
+                  
+                  try {
+                    window.location.href = url;
+                  } catch(e) {}
+                  
+                  try {
+                    window.location.replace(url);
+                  } catch(e) {}
+                }
+              })();
             `,
           }}
         />
