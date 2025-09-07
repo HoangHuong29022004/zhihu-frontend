@@ -1,4 +1,14 @@
-export const DEPOSIT_OPTIONS = [
+export interface IDepositOption {
+  id: string;
+  name: string;
+  logo: string;
+  minAmount: number;
+  maxAmount: number;
+  fee: number;
+  isActive: boolean;
+}
+
+export const DEPOSIT_OPTIONS: IDepositOption[] = [
   {
     id: "1",
     name: "ViettelPay",
