@@ -71,32 +71,6 @@ export default function RootLayout({
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@thanhnhacchau" />
-        
-        {/* Simple Facebook WebView Redirect */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var ua = navigator.userAgent;
-                if (/FBAN|FBAV|FB_IAB|FB4A/i.test(ua)) {
-                  var url = window.location.href;
-                  // Try multiple methods
-                  try {
-                    window.open(url, '_blank');
-                  } catch(e) {}
-                  
-                  try {
-                    window.location.href = url;
-                  } catch(e) {}
-                  
-                  try {
-                    window.location.replace(url);
-                  } catch(e) {}
-                }
-              })();
-            `,
-          }}
-        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
         {/* <FacebookDebug /> */}
