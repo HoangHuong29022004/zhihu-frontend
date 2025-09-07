@@ -7,6 +7,7 @@ export interface IDepositOption {
   fee: number;
   isActive: boolean;
   amount: number;
+  strawberry: number;
 }
 
 export const DEPOSIT_OPTIONS: IDepositOption[] = [
@@ -18,7 +19,8 @@ export const DEPOSIT_OPTIONS: IDepositOption[] = [
     maxAmount: 5000000,
     fee: 0,
     isActive: true,
-    amount: 50000
+    amount: 50000,
+    strawberry: 50
   },
   {
     id: "2", 
@@ -28,7 +30,8 @@ export const DEPOSIT_OPTIONS: IDepositOption[] = [
     maxAmount: 5000000,
     fee: 0,
     isActive: true,
-    amount: 100000
+    amount: 100000,
+    strawberry: 100
   },
   {
     id: "3",
@@ -38,7 +41,8 @@ export const DEPOSIT_OPTIONS: IDepositOption[] = [
     maxAmount: 5000000,
     fee: 0,
     isActive: true,
-    amount: 200000
+    amount: 200000,
+    strawberry: 200
   }
 ];
 
