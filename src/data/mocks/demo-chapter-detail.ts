@@ -164,5 +164,180 @@ export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
     comicSlug: "luc-linh-chau-13-tuoi-kiep-kho-tron",
     comicThumbnail: "/images/common/default_image.png",
     createdAt: "2024-01-19T10:00:00Z"
+  },
+  
+  // Chapters cho Bá Vương Học Viện
+  "chuong-1-nhap-hoc": {
+    id: "6",
+    title: "Chương 1: Nhập học",
+    slug: "chuong-1-nhap-hoc",
+    content: `
+      <p>Học viện Bá Vương - nơi tập trung những thiên tài trẻ tuổi nhất thế giới. Hôm nay là ngày nhập học của khóa mới.</p>
+      
+      <p>"Chào mừng các em đến với Học viện Bá Vương!" Hiệu trưởng tuyên bố với giọng trang nghiêm.</p>
+      
+      <p>Trong số những học sinh mới, có một cậu bé tên Minh Đức với khả năng đặc biệt mà chưa ai biết đến.</p>
+      
+      <p>"Tôi sẽ chứng minh rằng mình xứng đáng ở đây." Minh Đức tự nhủ trong lòng.</p>
+      
+      <p>Nhưng liệu cậu có thể vượt qua những thử thách đầu tiên của học viện?</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 3200,
+    authorId: "2",
+    authorName: "Tác giả B",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "2",
+    comicTitle: "Bá Vương Học Viện",
+    comicSlug: "ba-vuong-hoc-vien",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-10T10:00:00Z"
+  },
+  
+  "chuong-2-thu-thach-dau-tien": {
+    id: "7",
+    title: "Chương 2: Thử thách đầu tiên",
+    slug: "chuong-2-thu-thach-dau-tien",
+    content: `
+      <p>Ngày đầu tiên tại học viện, các học sinh được giao nhiệm vụ đầu tiên - vượt qua mê cung ma thuật.</p>
+      
+      <p>"Ai không hoàn thành trong 30 phút sẽ bị loại khỏi học viện!" Giáo viên tuyên bố.</p>
+      
+      <p>Minh Đức nhìn vào mê cung, tim đập nhanh. Đây là cơ hội để chứng minh khả năng của mình.</p>
+      
+      <p>Với sự quyết tâm, cậu bước vào mê cung và bắt đầu cuộc phiêu lưu đầu tiên...</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 2800,
+    authorId: "2",
+    authorName: "Tác giả B",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "2",
+    comicTitle: "Bá Vương Học Viện",
+    comicSlug: "ba-vuong-hoc-vien",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-11T10:00:00Z"
+  },
+  
+  // Chapters cho Thiên Tài Tiểu Thư
+  "chuong-1-thien-tai-xuat-hien": {
+    id: "8",
+    title: "Chương 1: Thiên tài xuất hiện",
+    slug: "chuong-1-thien-tai-xuat-hien",
+    content: `
+      <p>Trong một ngôi làng nhỏ, có một cô gái tên Linh Hoa với khả năng đọc được suy nghĩ của người khác.</p>
+      
+      <p>"Mẹ ơi, tại sao con lại có khả năng này?" Linh Hoa hỏi với giọng lo lắng.</p>
+      
+      <p>"Con yêu, đây là món quà đặc biệt mà thần linh ban tặng cho con." Mẹ cô trả lời với nụ cười ấm áp.</p>
+      
+      <p>Nhưng khả năng này sẽ đưa cô vào những cuộc phiêu lưu không ngờ...</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 4500,
+    authorId: "3",
+    authorName: "Tác giả C",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "3",
+    comicTitle: "Thiên Tài Tiểu Thư",
+    comicSlug: "thien-tai-tieu-thu",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-20T10:00:00Z"
+  },
+  
+  // Chapters cho Ma Vương Tái Sinh
+  "chuong-1-tai-sinh": {
+    id: "9",
+    title: "Chương 1: Tái sinh",
+    slug: "chuong-1-tai-sinh",
+    content: `
+      <p>Trong thế giới huyền huyễn, Ma Vương đã bị tiêu diệt bởi các anh hùng. Nhưng linh hồn của hắn không hoàn toàn biến mất.</p>
+      
+      <p>"Ta sẽ trở lại và trả thù tất cả!" Ma Vương thề thốt trong bóng tối.</p>
+      
+      <p>Hắn tìm được một cơ thể mới - một cậu bé yếu đuối tên Minh Hạo.</p>
+      
+      <p>"Từ nay ta sẽ sống trong cơ thể này và thực hiện kế hoạch trả thù của mình!"</p>
+      
+      <p>Nhưng liệu Ma Vương có thể hoàn thành mục tiêu của mình?</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 3800,
+    authorId: "4",
+    authorName: "Tác giả D",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "4",
+    comicTitle: "Ma Vương Tái Sinh",
+    comicSlug: "ma-vuong-tai-sinh",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-18T10:00:00Z"
+  },
+  
+  // Chapters cho Công Chúa Băng Giá
+  "chuong-1-cong-chua-bang": {
+    id: "10",
+    title: "Chương 1: Công chúa băng",
+    slug: "chuong-1-cong-chua-bang",
+    content: `
+      <p>Vương quốc Băng Giá - nơi cai trị bởi Công chúa Elsa với sức mạnh băng tuyết.</p>
+      
+      <p>"Tôi không thể kiểm soát được sức mạnh này!" Elsa lo lắng khi nhìn thấy băng tuyết bao phủ khắp nơi.</p>
+      
+      <p>Em gái Anna của cô luôn cố gắng giúp đỡ, nhưng Elsa sợ rằng sức mạnh của mình sẽ làm tổn thương những người thân yêu.</p>
+      
+      <p>"Tôi phải tìm cách kiểm soát sức mạnh này trước khi quá muộn."</p>
+      
+      <p>Cuộc hành trình tìm hiểu bản thân của Elsa bắt đầu...</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 5200,
+    authorId: "5",
+    authorName: "Tác giả E",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "5",
+    comicTitle: "Công Chúa Băng Giá",
+    comicSlug: "cong-chua-bang-gia",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-12T10:00:00Z"
+  },
+  
+  // Chapters cho Thiên Long Bát Bộ
+  "chuong-1-vo-lam-giang-ho": {
+    id: "11",
+    title: "Chương 1: Võ lâm giang hồ",
+    slug: "chuong-1-vo-lam-giang-ho",
+    content: `
+      <p>Võ lâm giang hồ - nơi tập trung những cao thủ võ lâm mạnh nhất thiên hạ.</p>
+      
+      <p>Trong số đó, có một chàng trai trẻ tên Tiêu Phong với võ công siêu phàm.</p>
+      
+      <p>"Ta sẽ trở thành cao thủ võ lâm mạnh nhất thiên hạ!" Tiêu Phong thề thốt.</p>
+      
+      <p>Nhưng con đường võ lâm không bao giờ dễ dàng. Tiêu Phong sẽ phải đối mặt với nhiều thử thách và kẻ thù mạnh mẽ.</p>
+      
+      <p>Liệu cậu có thể thực hiện được ước mơ của mình?</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 4100,
+    authorId: "6",
+    authorName: "Tác giả F",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "6",
+    comicTitle: "Thiên Long Bát Bộ",
+    comicSlug: "thien-long-bat-bo",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-22T10:00:00Z"
   }
 };
