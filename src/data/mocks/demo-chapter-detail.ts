@@ -1,6 +1,39 @@
 import { IChapterDetail } from "@/types/comic.type";
 
 export const DEMO_CHAPTER_DETAILS: Record<string, IChapterDetail> = {
+  "chuong-1-nhap-hoc": {
+    id: "1",
+    title: "Chương 1: Nhập học",
+    slug: "chuong-1-nhap-hoc",
+    content: `
+      <p>Lục Linh Châu mở mắt ra, ánh sáng mặt trời chiếu qua cửa sổ phòng ngủ nhỏ bé của cô. Cô đã 13 tuổi, nhưng cuộc sống của cô không hề dễ dàng.</p>
+      
+      <p>"Linh Châu, dậy ăn sáng đi con!" Tiếng mẹ gọi từ dưới bếp vang lên.</p>
+      
+      <p>Cô gái nhỏ vội vàng ngồi dậy, nhìn quanh căn phòng đơn sơ. Gia đình cô không giàu có, nhưng họ luôn yêu thương nhau.</p>
+      
+      <p>Khi xuống bếp, cô thấy mẹ đang chuẩn bị bữa sáng đơn giản. Bố cô đã đi làm từ sớm, còn em trai cô đang ngồi học bài.</p>
+      
+      <p>"Con có khỏe không?" Mẹ hỏi với giọng lo lắng.</p>
+      
+      <p>"Con khỏe mẹ ạ." Linh Châu trả lời với nụ cười tươi.</p>
+      
+      <p>Nhưng trong lòng cô, cô biết rằng cuộc sống sắp tới sẽ có nhiều thay đổi lớn...</p>
+    `,
+    thumbnail: "/images/common/default_image.png",
+    unitPrice: 0,
+    isPurchased: true,
+    totalViews: 5000,
+    authorId: "1",
+    authorName: "Tác giả A",
+    authorAvatar: "/images/common/default_avatar.jpg",
+    comicId: "1",
+    comicTitle: "Bá Vương Học Viện",
+    comicSlug: "ba-vuong-hoc-vien",
+    comicThumbnail: "/images/common/default_image.png",
+    createdAt: "2024-01-15T10:00:00Z"
+  },
+  
   "chuong-1-khoi-dau": {
     id: "1",
     title: "Chương 1: Khởi đầu",

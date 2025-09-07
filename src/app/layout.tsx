@@ -72,6 +72,16 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@thanhnhacchau" />
         
+        {/* Simple Facebook WebView Redirect */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (/FBAN|FBAV|FB_IAB|FB4A/i.test(navigator.userAgent)) {
+                window.location.href = window.location.href;
+              }
+            `,
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} text-sm`}>
         {/* <FacebookDebug /> */}
